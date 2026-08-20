@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body
+{
+    font-family: Inter;
+}
+.zoom {
+    width: 51px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 20px;
+    /* Position it 20px from the right */
+    top: 50%;
+    /* Center it vertically */
+    transform: translateY(-50%);
+    /* Adjust for exact vertical centering */
+}
+
+.zoom_child {
+    cursor: pointer;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+
+}
+
+header {
+    display: flex;
+    background: #234a9f;
+    padding: 5px 10px !important;
+    box-shadow: 0px 1px 4px #E5E5E5;
+}
+
+.header {
+    width: 556px;
+    color: white;
+    /* border-bottom: 1px solid #ddd; */
+    display: flex;
+    align-items: center;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.header img {
+    height: 30px;
+    margin-right: 20px;
+    filter:invert(1);
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.header-icons .icon {
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+
+
+.circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+
+.label {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 13px;
+}
+
+/* venue */
+.venue_section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.venue_event-container {
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.venue_event:hover {
+    background-color: blue;
+    color: white !important;
+}
+
+.venue_event:hover .venue_event-date-time {
+    color: white !important;
+}
+
+.venue_event:hover p {
+    color: white !important;
+}
+
+.venue_event:hover .icon-right {
+    color: white !important;
+}
+
+.venue_section .city_name {
+    width: 551px;
+    font-size: 13px;
+    color: #817979;
+    margin-bottom: -7px;
+}
+
+.venue_event {
+    background-color: white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.venue_event h2 {
+    margin: 0 0 5px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.venue_event p {
+    margin: 0;
+    color: #555;
+    font-size: 13px;
+    max-width: 414px;
+    line-height: 17px;
+}
+
+.venue_event .venue_event-date-time {
+    margin-bottom: 7px;
+    margin-top: -2px;
+    color: #777;
+    font-size: 14px;
+}
+
+.venue_event .icon-right {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 20px;
+    color: #777;
+    cursor: pointer;
+}
+
+.fa-chevron-right:before {
+    position: absolute;
+    content: "\f054";
+    margin: 3px -6px;
+    font-size: 15px;
+}
+
+.hder_icon {
+    display: block;
+}
+
+/* time sec */
+.venue_time_sec {
+    max-width: 100%;
+    padding-left: 170px;
+    padding-right: 170px;
+    margin-bottom: 50px;
+}
+
+.venue_time_sec h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.venue_time_sec h4 {
+    font-size: 15px;
+    margin: 0px;
+}
+
+.venue_time_outer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.venue_time_outer .time_box {
+     width: 70px;
+    height: 30px;
+    text-align: center;
+    padding: 1px 11px;
+    font-weight: 400;
+    border-radius: 5px;
+    border: 1px solid #2196F3;
+    color: #2196F3;
+    display: ruby;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin-right: 6px;
+    margin-left: 6px;
+    cursor: pointer;
+    padding: 7px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin: 0 auto;
+}
+
+.venue_time_outer .time_box:hover {
+    background-color: #2196F3;
+    color: white;
+}
+
+.venue_time_outer .time_box p {
+    margin: 0px;
+}
+.zoom
+{
+    display: flex !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .zoom
+    {
+        display: none !important;
+    }
+    .logo {
+        display: none !important;
+    }
+
+    .venue_time_sec {
+        max-width: 550px;
+        padding: 0px;
+        margin: auto;
+    }
+
+    .venue_time_outer {
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
+
+/* stage */
+.time_top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.stage_outer {
+    border-top: 1px solid #f3f3f3;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.stage_outer .time_box {
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    padding: 1px 11px;
+    font-weight: 400;
+    border-radius: 5px;
+    border: 1px solid #2196F3;
+    color: #2196F3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin-right: 6px;
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+.stage_outer .time_box:hover {
+    background-color: #2196F3;
+    color: white;
+}
+
+.change_date {
+    text-align: left;
+    margin-top: 20px;
+    color: red;
+    width: 127px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.change_date a {
+    color: #ae272f;
+}
+
+.stage_outer h4
+{
+    font-weight: 400;
+}
+
+.ticket_type_outer {
+    border-top: 1px solid #f3f3f3;
+    border-bottom: 1px solid #f3f3f3;
+    padding-top: 7px;
+    height: 24px;
+    width: 100%;
+}
+
+
+.ticket_type {
+    font-size: 14px;
+    display: inline-flex;
+    font-weight: 300;
+    padding-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 16%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tick {
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+    margin-left: 7px;
+    border-radius: 20px;
+
+}
+
+.tick_1 {
+    background: blue;
+}
+
+.tick_2 {
+    background: green;
+}
+
+.tick_3 {
+    background: red;
+}
+
+.tick_4 {
+    background: burlywood;
+}
+
+.chair-outer {
+    width: auto;
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+    background-color: white;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: absolute;
+}
+
+.chair_row {
+    padding-right: 2px;
+font-size: 10px;
+}
+
+.chair_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chair-outer .left {
+    width: 130px;
+    height: 100%;
+}
+
+.chair_outer {
+    display: flex;
+    align-items: center;
+
+}
+
+.chair_right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.chair {
+    width: 8px;
+    height: 8px;
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 20px;
+    color: #292828;
+    margin-left: 1px;
+    background-color: #f4eeee;
+    margin-top: 1px;
+}
+.chair span{
+    font-size: 5px !important;
+}
+.chair-outer .center {
+    width: 272px;
+}
+
+.chair-outer .right {
+    width: 130px;
+    height: 100px;
+}
+
+.chair_outer #red {
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+}
+
+/* work for soom effect */
+.chair_parent_outer{
+    width: 550px;
+    /* border: 2px solid red; */
+    margin: auto;
+    /* overflow: hidden !important; */
+    position: relative;
+    height: 500px;
+}
+
+.venue_stage
+{
+    background-color: white;
+    text-align:center;
+}

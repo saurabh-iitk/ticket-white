@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo env('APP_NAME')?> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no ">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('assets/venue/venue.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+    <style>
+        .venue_section
+        {
+            border-top: 1px solid #f3f3f3 !important;
+        }
+    </style>
+    
+   @include('includes.analytics')
+
+
+</head>
+
+<body style="overflow-x:hidden">
+    <header>
+        <div class="logo">
+            <a href="{{ route('index')}}"><img src="{{asset('assets/venue/logo.png')}}" alt="ops logo" style="height: auto;width: 90px;position: absolute;margin-top: -2px;object-fit: cover;">
+            </a>
+        </div>
+        <div class="header">
+            <div class="hder_icon" style="cursor:pointer;" onclick="javascript:history.go(-1)"><img src="{{asset('assets/venue/left.png')}}" alt=""></div>
+            <div class="header-title"><?php echo env('APP_NAME')?></div>
+            <div class="header-icons">
+                <div class="icon"><a href="{{ route('index')}}"><img src="{{asset('assets/venue/close.png')}}" alt="" style="width: 24px;height: 24px;"></a></div>
+            </div>
+        </div>
+    </header>
+    <!-- progress bar -->
+    <section class="progress_sec" style="background-color: white;margin: -2px 10px 0px 10px;cursor:pointer;">
+        <div class="progress-bar">
+            <div class="step active">
+                <div class="label">Venue</div>
+                <div class="circle"><span></span></div>
+            </div>
+            <div class="step ">
+                <div class="label">Date & Time</div>
+                <div class="circle"><span></span></div>
+            </div>
+            <div class="step">
+                <div class="label">Seats</div>
+                <div class="circle"><span></span></div>
+            </div>
+        </div>
+    </section>
+    <section class="venue_section">
+        <div class="venue_event-container" style="cursor:pointer;" >
+            <?php
+            foreach($events as $event)
+            {
+                $event_id=$event->id;
+                $event_data = getEvent($event_id);
+                $event_title = ucwords($event_data->event_title);
+                $city_data = getCity($event_data->city_id);
+                $city_name = strtoupper($city_data->name);
+                $venue_data = getVenue($event_data->venue_id);
+                $venue_name = ucfirst($venue_data->name);
+                $address = ucfirst($venue_data->address);
+                $map = html_entity_decode($venue_data->map);
+                $event_banner=$event_data->event_banner;
+             ?>
+            <div class="city_name" style="margin-bottom: 0px; margin-top: 30px; font-weight:bold">{{ $city_name }}</div>
+            <div class="venue_event" onclick="redirect_to('{{$event_id}}, {{$city_name}}')">
+                <h2>{{ $venue_name }} : {{ $city_name }} </h2>
+                <p>{{$address}}</p>
+                <div class="icon-right"><i class="fas fa-chevron-right"></i></div>
+               <div style="visibility:hidden">.</div>
+            </div>
+            
+             <?php echo $map;?>
+            <?php  } ?>
+        </div>
+    </section>
+</body>
+
+<script type="text/javascript">
+    var scheduleUrl = "{{ route('book_ticket') }}";
+    function redirect_to(id, city) {
+            posthog.capture('Venue Selected');
+            console.log('Venue Selected');
+        window.location = scheduleUrl+"?event_id="+id;
+    }
+    </script>
+</html>

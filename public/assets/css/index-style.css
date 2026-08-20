@@ -1,0 +1,624 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+    font-size: 14px !important;
+}
+
+iframe {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    border: none;
+}
+
+.nav-link {
+    color: white !important;
+    margin-right: 15px;
+}
+
+.nav-link:hover {
+    color: #ec459e !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23ec459e' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/*  */
+.custom-section {
+    background-color: black;
+    color: white;
+    padding: 40px 0;
+}
+.custom-section h2 {
+font-weight: 600;
+font-size: 26px;
+}
+.custom-section img {
+border-radius: 10px;
+box-shadow: -1px 3px 23px #ec459e;
+width: 100%;
+height: auto;
+}      
+.custom-text {
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+.custom-text{
+    margin-top: 40px;
+}
+#main {
+    display: block;
+  }
+  
+#land_background h2 {
+    font-size: 20px !important;
+}
+.price_event {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.price_event h5 {
+    width: 100% !important;
+}
+}
+
+#ticket {
+    border-radius: 20px;
+    padding: 5px 18px;
+    border: 2px solid #ec459e;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#ticket a {
+    color: #ec459e;
+    text-decoration: none;
+
+}
+
+/* hover */
+#ticket:hover {
+    border: white 2px solid;
+    background-color: #ec459e;
+}
+
+#ticket:hover a {
+    color: white;
+}
+
+/* land_1 */
+.land_img1 {
+    height: 500px;
+    background-image: url("../image/images/land_1.jpg");
+    background-position: center;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+#land_background {
+    background-image: url("../image/images/bg-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay {
+    background-color: rgb(35 35 35 / 77%);
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: transparent !important;
+    color: white;
+    border-radius: .3rem;
+}
+
+.jumbotron h1 {
+    font-weight: 800;
+}
+
+.jumbotron p {
+    font-size: 20px;
+}
+/* marqee */
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    background-color: #ec459e;
+   
+}
+
+.marquee span {
+    padding: 10px;
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 20s linear infinite;
+    font-size: 30px;
+    font-weight: 600;
+}
+.marquee .mr_span1 {
+    color: black !important;
+    font-weight: 600;
+}
+.marquee .mr_span2 {
+    color: black !important;
+    font-weight:400;
+}
+
+.marquee .mr_span3 {
+    color: black;
+    font-weight: 600;
+}
+
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+/* second page */
+.live_event_sec {
+    background-image: url("../image/images/main_evnt.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+}
+
+.live_event h1 {
+    margin-top: 180px;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    text-shadow: -4px 1px 0px #ec459e;
+    font-size: 70px;
+}
+.live_event h1 .spn{
+    font-size: 70px;
+}
+
+.live_event_card {
+    margin-top: 25px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px -1px 21px #ec459e;
+    border-radius: 7px;
+}
+
+.live_event_card img {
+    border-radius: 7px 7px 0px 0px;
+    transition: 1s ease;
+    display: block;
+}
+
+.live_event_card .card-title {
+    font-weight: 900;
+}
+.live_event span {
+    font-size: 50px;
+    font-weight: bolder;
+    margin-left: 10px;
+}
+
+.date_event span {
+    padding-left: 12px;
+    font-size: 15px;
+}
+
+.date_event i {
+    color: #ec459e;
+}
+
+.location_event span {
+    padding-left: 15px;
+    font-size: 15px;
+}
+
+.location_event i {
+    font-size: 22px;
+    color: #ec459e;
+}
+
+.price_event {
+    margin-top: 15px;
+}
+
+.price_event h5 {
+    width: 70%;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.price_event a {
+    color: white;
+    text-decoration: none;
+    background-color: #ec459e;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 21px;
+}
+@media only screen and (max-width: 1024px) {
+    .live_event h1 {
+        margin-top: 150px !important;
+        font-size: 40px;
+    }
+    .price_event a {
+        padding: 5px 9px !important;
+        font-size: 11px !important;
+    }
+    .live_event h1 .spn{
+        font-size: 50px;
+    }
+    }
+  
+
+/*3rd shedule page */
+.shedule_sec {
+    margin-top: 50px;
+}
+
+.shedule_card {
+    padding: 30px;
+    border-radius: 10px;
+    background: white;
+    padding-left: 1.5rem !important;
+    margin-bottom: 15px;
+}
+
+.shedule_card h4 {
+    font-size: 26px !important;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+#custem_tick
+{
+    padding:30px !important;
+}
+
+.time {
+    font-weight: 400;
+    border: 2px solid #acacac;
+    width: 100%;
+    color: #62d8a6;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.time:hover {
+    border: 2px solid White;
+    color: white;
+    background-color: #ec459e;
+    cursor: pointer;
+}
+
+
+
+
+/* 5page contect */
+    .contect {
+        background-color: #ebebeb;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+
+.coun_ticket
+    {
+        margin-top:-36px!important;
+    }
+    
+    
+ @media only screen and (max-width: 768px) {
+     .contect {
+        margin-top: 0px !important;
+        margin-bottom:0px !important;
+    }
+    
+    
+ }
+ 
+ 
+.contect h3 {
+    background: #ec459e;
+    padding: 14px 26px;
+    font-weight: 300;
+    font-size: 18px;
+    display: flex;
+    color: white;
+    letter-spacing: 0.4px;
+}
+
+.contect h3 span {
+    font-size: 20px;
+    margin-right: 9px;
+}
+
+.contect form {
+    padding: 10px;
+}
+
+.contect form label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    font-weight: 600;
+}
+
+.form-control:focus {
+    outline: 2px solid #ec459e;
+    border: none;
+}
+
+.contect form .form-check-input {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid black !important;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.form-check-input:checked {
+    background-color: #ec459e;
+    border: 2px solid white;
+}
+
+.ticket-method {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contect-ty img {
+    /* width: 200px; */
+}
+
+.contect-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.contect-type img {
+    width: 60px;
+    vertical-align: middle;
+    border-style: none;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.contect-type h6 {
+    margin-top: 7px;
+    font-size: 14px;
+    ;
+    font-weight: 600;
+    color: #ec459e;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.contect form h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.contect-frm-btn {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pay_btn {
+    border: none;
+    background: #ec459e;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 14px;
+    color: white;
+}
+
+.btn_bottom {
+    margin-top: 17px;
+    width: 200px;
+    height: 1px;
+    background-color: black;
+}
+
+.note p {
+    padding-left: 20px;
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.order_summery {
+    background-color: #ebebeb;
+    padding: 20px 30px;
+}
+
+.order_summery h6 {
+    font-size: 16px;
+}
+
+.coun_ticket {
+    text-align: right;
+    font-size: 14px;
+}
+
+.order_summery h5 {
+    padding-right: 20px;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.ticket_city {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.ticket_row {
+    margin-top: 16px;
+    font-size: 14px;
+    margin-bottom: 35px;
+}
+
+.ticket_date {
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+
+.ticket_gst span {
+    width: 60%;
+}
+
+.ticket_devider {
+    background: #747272;
+    width: 80%;
+    height: 1px;
+    margin: 25px auto;
+}
+
+.ticket_subtotal {
+    display: flex;
+    font-size: 15px;
+    margin-top:20px
+}
+
+.ticket_subtotal h6 {
+    text-align: right;
+    width: 100%;
+    margin: 0px 0px 0px;
+}
+
+.ticket_subtotal span{
+    font-weight: 600;
+   
+}
+
+.ticket_gst {
+    display: flex;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+.ticket_gst h6 {
+    text-align: right;
+    width: 100%;
+    margin: 0px 0px 0px;
+}
+
+.amont_payabl {
+    padding: 11px 30px;
+    display: flex;
+    background-color: #feed96;
+    margin: 0px 0px 0px;
+}
+
+.amont_payabl span {
+    font-size: 15px;
+    width: 40%;
+}
+
+.amont_payabl h6 {
+    margin: 0px 0px 0px;
+    width: 60%;
+    text-align: right;
+}
+
+#land_background h2 {
+    line-height: 1.1em !important;
+    font-size: 60px;
+    font-weight: 900px;
+    background: linear-gradient(270deg, lightblue, purple, pink);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: blockbusteranimation 11s ease infinite;
+    -moz-animation: blockbusteranimation 11s ease infinite;
+    -o-animation: blockbusteranimation 11s ease infinite;
+    animation: blockbusteranimation 11s ease infinite;
+  }
+
+  @keyframes blockbusteranimation {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+/* preeloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4a484b; /* You can change the background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Make sure it's on top of everything else */
+}
+
+/* Hide the content initially */
+#content {
+    display: none;
+}
+
+/* media query */
+@media only screen and (max-width: 425px) {
+    .price_event {
+        flex-direction: row !important;
+    }
+    .price_event h5 {
+        width: 70% !important;
+    }
+    .live_event h1 .spn {
+        font-size: 40px !important;
+        box-shadow: none;
+  }
+  .live_event span {
+    font-size: 20px !important;
+    
+}
+}

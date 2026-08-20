@@ -1,0 +1,149 @@
+
+
+.line_row{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-wrap: wrap;
+}
+.line_row .title{
+    padding-right: 10px;
+    
+}
+.black{
+    color: Black !important;
+}
+.line_row .chair {
+    border-radius: 50%;
+    color: #ec459e;
+    max-width: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ec459e;
+    height: 22px;
+    list-style: none;
+    font-size: 10px;
+    margin-right: 3px;
+    flex: 1 0 auto;
+}
+.side-h{
+    margin-top: 65px;
+    margin-bottom: 30px;
+    font-size: 21px;
+    font-weight: 600;
+}
+.line_row .chair-fill {
+    border-radius: 50%;
+    /* color: #ec459e; */
+    background: #746f71;
+    max-width: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #746f71;
+    height: 22px;
+    list-style: none;
+    font-size: 10px;
+    margin-right: 3px;
+    flex: 1 0 auto;
+}
+.text-center {
+    text-align: center;
+}
+
+.stage_h {
+    margin-top: 52px;
+    font-weight: 600;
+    transform: translate(-126px);
+}
+@media only screen and (max-width: 1024px) {
+    .stage_h {
+        margin-top: 52px;
+        font-weight: 600;
+        transform: translate(-74px);
+    }
+}
+@media only screen and (max-width: 768px) {
+    .stage_h {
+        margin-top: 52px;
+        font-weight: 600;
+        transform: translate(69px);
+    }
+    .stage-btn {
+    background: #ec459e !important;
+    padding: 30px !important;
+    font-size: 30px !important;
+    border-radius: 7px !important;
+    color: white;
+}
+}
+@media only screen and (max-width: 425px) {
+    .col-xl-8, .col-lg-9, .col-md-6{
+        margin-left: 20px;
+    }
+    .stage_h {
+        margin-top: 52px;
+        font-weight: 600;
+        transform: translate(0px);
+    }
+}
+    .t_d_p {
+font-size: 23px;
+}
+.t_d_p span{
+font-size: 18px;
+font-weight:400;
+}
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.border-right {
+    border-right: 1px solid black !important;
+}
+
+.left-top-box {
+    padding: 20px;
+}
+
+.stage-btn {
+    background: #ec459e;
+    margin: auto;
+    padding: 30px;
+    border-radius: 7px;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    color: white;
+}
+
+.small-box {
+    background: #ebebeb;
+    padding: 10px 10px 10px 10px;
+}
+.dropdown_edit, .dropdown_edit .btn{
+    background-color: #ebebeb;
+    outline-color: #ebebeb;
+    color: black;
+    border: none;
+}
+.dropdown_edit, .dropdown_edit .btn:hover{
+    background-color: #ebebeb;
+    outline-color: #ebebeb;
+    color: black;
+    border: none;
+}
+
+.dropdown_edit .dropdown-toggle:focus{
+    background-color: #ec459e;
+    color: white;
+    font-size: 19px;
+}
+.dropdown_edit .dropdown-item:focus{
+    background-color: #ec459e;
+    color: white;
+    font-size: 19px;
+}

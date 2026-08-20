@@ -1,0 +1,516 @@
+/* ticket */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    font-size: 14px !important;
+}
+.ticket_outer {
+    background-color: white;
+    padding: 27px;
+}
+
+.close_icon {
+    text-align: right;
+}
+
+.close_icon img {
+    cursor: pointer;
+}
+
+.ticket_outer h4 {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.tecket_lang {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+
+}
+
+.tecket_lang h5 {
+    width: 100%;
+    text-align: right;
+}
+
+.coun_ticket {
+    text-align: right;
+    font-size: 14px;
+    padding-right: 37px;
+}
+
+.ticket_outer h5 {
+    padding-right: 50px;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.ticket_city {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.ticket_row {
+    margin-top: 16px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.ticket_type {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.ticket_date {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ticket_devider {
+    background: #747272;
+    width: 80%;
+    height: 1px;
+    margin: 22px auto;
+}
+
+.ticket_subtotal {
+    display: flex;
+    font-size: 15px;
+}
+
+.ticket_subtotal h6 {
+    text-align: right;
+    width: 100%;
+    margin: 0px 0px 0px;
+}
+
+.ticket_subtotal span {
+    font-weight: 600;
+}
+
+.ticket_gst {
+    display: flex;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+.ticket_gst .span-1 {
+    color: #f92c8b;
+}
+
+.ticket_gst .span-2 {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.ticket_gst h6 {
+    text-align: right;
+    width: 100%;
+    margin: 0px 0px 0px;
+}
+
+.internet_hendling {
+    display: flex;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.internet_hendling span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.internet_hendling h6 {
+    font-weight: 600;
+    width: 177px;
+    text-align: right;
+}
+
+/* dropdown */
+.custom-dropdown {
+    border: none;
+    color: #f92c8b;
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    box-shadow: none !important;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.custom-dropdown:hover {
+    color: #f92c8b;
+}
+
+.custom-icon {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.dropdown-item {
+    color: #f92c8b;
+    background-color: transparent;
+    border: none;
+    box-shadow: none !important;
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    color: #f92c8b;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+/*  */
+.donation {
+    padding: 7px 11px;
+    background: #9cc494;
+    color: white;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    font-size: 14px;
+    border-radius: 7px;
+    align-items: baseline;
+}
+
+.donation img {
+    width: 13px;
+    margin-right: 10px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.donation h6 {
+    width: 100%;
+    font-size: 14px;
+    text-align: right;
+    margin-bottom: 0px
+}
+
+.amont_payabl {
+    padding: 13px 50px;
+    display: flex;
+    background-color: #f92c8b;
+    margin: 0px 0px 0px;
+    color: white;
+}
+
+.amont_payabl span {
+    font-size: 15px;
+    width: 40%;
+}
+
+.amont_payabl h6 {
+    margin: 0px 0px 0px;
+    width: 60%;
+    text-align: right;
+}
+
+/* eticket */
+.transetion {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.etick_outer {
+    width: 380px;
+}
+
+.eticket {
+    background-color: white;
+    padding: 19px;
+    border-radius: 10px;
+}
+
+.eticket img {
+    height: 100px;
+    width: 82px;
+    vertical-align: middle;
+    border-style: none;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.etecket_lang {
+    font-size: 15px;
+}
+
+.eticket h4 {
+    font-size: 50px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.eticket_city {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.eticket_date {
+    font-size: 13px;
+}
+
+.outer_ img {
+    position: absolute;
+}
+
+.outer_ img {
+    margin-top: -3px;
+    margin-left: 200px;
+    width: 51px;
+    height: auto;
+
+}
+
+.stag_seat_outer {
+    margin-top: 6px;
+}
+
+.stag_seat {
+    font-size: 14px;
+    margin-left: 16px;
+    margin-top: 14px;
+    font-weight: 700;
+}
+
+.stag_seat .fr {
+    width: 128px;
+}
+
+.get_stag_seat {
+    font-size: 18px;
+    margin-left: 16px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.get_stag_seat .fr {
+    width: 128px;
+}
+
+.stage-barcode {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stage-barcode img {
+    margin-top: 20px;
+    width: 192px;
+    object-fit: contain;
+    height: 200px;
+}
+
+.time_trecker {
+    margin-top: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.corner-circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+/* Positioning circles in corners */
+.top-left {
+    top: 10px;
+    left: -14px;
+}
+
+.top-right {
+    top: 10px;
+    right: -14px;
+}
+
+.bottom-left {
+    bottom: -10px;
+    left: -14px;
+}
+
+.bottom-right {
+    bottom: -10px;
+    right: -14px;
+}
+
+/* detail_ticket */
+.detail_ticket_outer_ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.detail_ticket_outer {
+    width: 365px;
+}
+.detail_ticket {
+    background-color: #fff;
+    padding: 19px;
+    overflow: hidden;
+}
+.detail_ticket h4 {
+    margin-top: 37px !important;
+    font-size: 17px;
+    font-weight: 700;
+}
+.detail_ticket img {
+    width: 140px;
+    justify-content: center;
+    text-align: center;
+}
+
+.detail_ticket {
+    font-size: 14px;
+}
+
+.detail_ticket_city {
+    font-weight: 700;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.detail_ticket_date {
+    font-size: 13px;
+    MARGIN-TOP: 7px;
+    margin-bottom: 7px;
+}
+.tap_detail{
+    width: 100%;
+}
+
+.tap_detail h6{
+    font-size: 15px;
+    background: #ebe7e7d1;
+    padding: 8px 0px;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 348px !important;
+}
+/* two cicle */
+.tap_detail {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/* Style for the white circles */
+.circle {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.circle.left {
+    left:-13px;
+}
+
+.circle.right {
+    right: -13px; 
+}
+.detail_ticket_type{
+    text-align: center;
+    width: 100%;
+}
+.detail_ticket_type h6 {
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 800;
+}
+.detaile_stage-barcode{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.detaile_stage-barcode img{
+    height: 118px;
+    width: 118px;
+    vertical-align: middle;
+    border-style: none;
+    object-fit: cover;
+    border-radius: 7px;
+    margin-top: 0px;
+}
+.detaile_stage-barcode h6{
+font-size: 14px;
+}
+.detaile_stage-barcode p {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 4px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.contect img {
+    height: 25px;
+    width: 25px;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-style: none;
+    object-fit: cover;
+    border-radius: 7px;
+    margin-top: 0px;
+}
+.contect p {
+ font-weight: 400;   
+}
+.tap_detail .hr{
+    width: 100%;
+    height: 1px;
+    background-color: #00000052;
+}
+.tap_detail .circle.lef {
+    left:-27px;
+}
+
+.tap_detail .circle.righ {
+    right: -27px; 
+}
+.detail_amount {
+    margin-top: 18px;
+}
+.detail_amount .text_total {
+    font-weight: 600;
+    width: 117px;
+}
+.detail_amount h5 {
+    font-size: 16px;
+    width: 200px;
+    text-align: right;
+}
+
+.amount_fr {
+    margin-top:0px;
+}
+.amount_fr .text_total {
+    width: 125px;
+}
+.amount_fr h5 {
+    font-size: 16px;
+    width: 200px;
+    text-align: right;
+}
+
