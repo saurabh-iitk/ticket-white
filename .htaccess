@@ -1,0 +1,32 @@
+### HOSTINGER LITESHIELD RECAPTCHA, DO NOT REMOVE THIS LINE ###
+RewriteEngine On
+#LsRecaptcha 100
+#RewriteRule .* - [E=verifycaptcha:drop]
+### HOSTINGER LITESHIELD RECAPTCHA, DO NOT REMOVE THIS LINE ###
+<IfModule mod_rewrite.c>
+  AddHandler application/x-httpd-php83 .php
+</IfModule>
+
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+    
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    RewriteCond %{REQUEST_FILENAME} -d [OR]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ ^$1 [N]
+
+    RewriteCond %{REQUEST_URI} (\.\w+$) [NC]
+    RewriteRule ^(.*)$ public/$1
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php
+</IfModule>
