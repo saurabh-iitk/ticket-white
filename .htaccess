@@ -2,12 +2,6 @@
 RewriteEngine On
 #LsRecaptcha 100
 #RewriteRule .* - [E=verifycaptcha:drop]
-### HOSTINGER LITESHIELD RECAPTCHA, DO NOT REMOVE THIS LINE ###
-<IfModule mod_rewrite.c>
-  AddHandler application/x-httpd-php83 .php
-</IfModule>
-
-
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
