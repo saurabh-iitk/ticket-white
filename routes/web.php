@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SoftwareLandingController;
 use App\Http\Controllers\Auth\User\BookingsController;
 use App\Http\Controllers\Auth\User\DashboardController;
 use App\Http\Controllers\Auth\User\UserController;
@@ -49,9 +50,17 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/generate-image', [ImageController::class, 'generateImage']);
 
 // General public routes
-Route::get('/', [HomeController::class, 'home']);
-Route::get('/index', [HomeController::class, 'index'])->name('index');
+// Route::get('/', [HomeController::class, 'home']);
+Route::get('/index', function() {
+    return redirect()->route('software.home');
+});
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+// BookMyTicket Software Landing Page Routes
+Route::get('/', [SoftwareLandingController::class, 'home'])->name('software.home');
+Route::get('/features', [SoftwareLandingController::class, 'features'])->name('software.features');
+Route::get('/pricing', [SoftwareLandingController::class, 'pricing'])->name('software.pricing');
+Route::post('/contact-submit', [SoftwareLandingController::class, 'submitContact'])->name('software.contact.submit');
 Route::get('/user-register', [HomeController::class,'user_register'])->name('user-register');
 Route::get('/user-login', [HomeController::class,'user_login'])->name('user-login');
 Route::get('/showcase', [HomeController::class, 'showcase'])->name('showcase');
@@ -61,7 +70,8 @@ Route::get('/photo_gallery', [HomeController::class, 'photo_gallery'])->name('ph
 Route::get('/photo_gallery_details/{id}', [HomeController::class, 'photo_gallery2'])->name('photo_gallery2');
 
 Route::get('/video_gallery', [HomeController::class, 'video_gallery'])->name('video_gallery');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+// Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/contact', [SoftwareLandingController::class, 'contact'])->name('software.contact');
 Route::get('/schedule', [HomeController::class, 'schedule'])->name('schedule');
 Route::get('/payment', [HomeController::class, 'payment'])->name('payment');
 Route::get('/gallery_images', [HomeController::class, 'gallery_images'])->name('gallery_images');
