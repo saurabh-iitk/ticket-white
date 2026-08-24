@@ -35,6 +35,13 @@
     @yield('css')
 </head>
 <body id="body" class="app sidebar-mini rtl">
+    <!-- Inline script to restore sidebar toggle preference without screen flicker -->
+    <script type="text/javascript">
+        if (localStorage.getItem('sidebar-minimized') === 'true') {
+            document.body.classList.add('sidenav-toggled');
+        }
+    </script>
+
     <!-- Page Loader Overlay -->
     <div id="pageLoaderOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
@@ -77,13 +84,21 @@
         function convertButtonsToIcons() {
             $('table td').find('a, button').each(function() {
                 var $el = $(this);
-                var text = $.trim($el.text());
+                var text = $.trim($el.text()).replace(/\s+/g, ' ');
                 
-                if (text === 'View Details' || text === 'View') {
+                if (text === 'View Details' || text === 'View' || text === 'View Seat Layout') {
                     $el.html('<i class="fa-solid fa-eye" style="margin: 0;"></i>').attr('title', 'View Details');
                 } else if (text === 'Edit') {
                     $el.html('<i class="fa-solid fa-pen" style="margin: 0;"></i>').attr('title', 'Edit');
-                } else if (text === 'Delete') {
+                } 
+                 else if (text === 'Layout Mapping') {
+                    $el.html('<i class="fa-solid fa-layer-group" style="margin: 0;"></i>').attr('title', 'Layout Mapping');
+                } 
+                else if (text === 'Generate Invoice') {
+                    $el.html('<i class="fa-solid fa fa-retweet" style="margin: 0;"></i>').attr('title', 'Generate Invoice');
+                } 
+                
+                else if (text === 'Delete') {
                     $el.html('<i class="fa-solid fa-trash" style="margin: 0;"></i>').attr('title', 'Delete');
                 }
             });
@@ -100,7 +115,10 @@
                 'Manage Gallery': 'fa-solid fa-images',
                 'Reports': 'fa-solid fa-chart-line',
                 'System Configuration': 'fa-solid fa-gears',
+                'Manage Setting': 'fa-solid fa-gears',
                 'Security': 'fa-solid fa-shield-halved',
+                'Manage Coupon': 'fa-solid fa-tags',
+                'Manage Company': 'fa-solid fa-building',
 
                 // Master items
                 'States': 'fa-solid fa-map-location',
@@ -115,7 +133,7 @@
                 'Events': 'fa-solid fa-calendar-days',
                 'Event Schedules': 'fa-solid fa-clock',
                 'Event Show Time': 'fa-solid fa-hourglass-half',
-                'Ticket Types': 'fa-solid fa-tags',
+                'Ticket Types': 'fa-regular fa-circle-check',
                 'Event Tickets': 'fa-solid fa-ticket-simple',
                 'Show Schedule': 'fa-solid fa-timeline',
 
@@ -127,36 +145,48 @@
                 // Gallery items
                 'Photos Gallery': 'fa-solid fa-image',
                 'Photo Content': 'fa-solid fa-photo-film',
+                'Video Gallery': 'fa-solid fa-video',
 
                 // Reports items
                 'Booking Report': 'fa-solid fa-file-invoice-dollar',
                 'Feedback Report': 'fa-solid fa-comment-dots',
-                'General Feedback Report': 'fa-solid fa-comments',
+                'General Feedback Report': 'fa-regular fa-comments',
                 'Source Report': 'fa-solid fa-network-wired',
                 'Payment Mode Report': 'fa-solid fa-wallet',
                 'Ticket Sale Report': 'fa-solid fa-cash-register',
-                'Booking Type Report': 'fa-solid fa-tags',
+                'Booking Type Report': 'fa-regular fa-circle-check',
                 'Cashier Shift Summary': 'fa-solid fa-clipboard-list',
-                'Cashier Shift Summary Multiple': 'fa-solid fa-clipboard-check',
+                'Cashier Shift Summary Multiple': 'fa-regular fa-circle-check',
                 'Cashier Shift Vs Payment Summary': 'fa-solid fa-scale-balanced',
                 'Individual Cashier Shift Summary': 'fa-solid fa-user-check',
                 'Event Summary Show Wise': 'fa-solid fa-calendar-week',
                 'Scan Summary Show Wise': 'fa-solid fa-qrcode',
                 'Event Summary Day Wise': 'fa-solid fa-calendar-day',
-                'PG Transaction Report': 'fa-solid fa-credit-card',
-                'PG Logs Report': 'fa-solid fa-file-shield',
-                'Cancelled Booking Report': 'fa-solid fa-rectangle-xmark',
-                'Complementary Report': 'fa-solid fa-gift',
+                'Payment Gateway Transaction': 'fa-solid fa-credit-card',
+                'Customer Payment Report': 'fa-solid fa-file-shield',
+                'Cancelled Booking': 'fa-solid fa-rectangle-xmark',
+                'Complementry Report': 'fa-solid fa-gift',
+                'Analytics Summary': 'fa-solid fa-chart-column',
                 'Sale Summary': 'fa-solid fa-chart-column',
-                'Gst Report R1': 'fa-solid fa-percent',
+                'GST R1 Report': 'fa-solid fa-percent',
+
+                // Scanning items
+                'Scan Ticket': 'fa-solid fa-qrcode',
+                'Scan Report': 'fa-solid fa-square-poll-vertical',
+
+                // Coupon & Company items
+                'Coupon Category': 'fa-solid fa-ticket',
+                'Coupons': 'fa-solid fa-tags',
+                'Companies': 'fa-solid fa-building',
 
                 // Configuration items
-                'Configuration': 'fa-solid fa-sliders',
+                'Configurations': 'fa-solid fa-sliders',
                 'SMS Configuration': 'fa-solid fa-comment-sms',
                 'Email Configuration': 'fa-solid fa-envelope',
                 'PG Configuration': 'fa-solid fa-wallet',
-                'Payment Method': 'fa-solid fa-money-bill-transfer',
-                'Booking Platform': 'fa-solid fa-laptop-code',
+                'Payment Methods': 'fa-solid fa-money-bill-transfer',
+                'Booking Platforms': 'fa-solid fa-laptop-code',
+                'Settings': 'fa-solid fa-gears',
 
                 // Security items
                 'Modules': 'fa-solid fa-cubes',
@@ -170,11 +200,11 @@
                 var text = '';
                 
                 if ($label.length) {
-                    text = $.trim($label.text());
+                    text = $.trim($label.text()).replace(/\s+/g, ' ');
                 } else {
                     text = $.trim($link.contents().filter(function() {
                         return this.nodeType === 3;
-                    }).text());
+                    }).text()).replace(/\s+/g, ' ');
                 }
 
                 if (text && iconMap[text]) {
@@ -188,9 +218,26 @@
             });
         }
 
-        // Run conversions on load
+        function highlightActiveSidebar() {
+            var currentUrl = window.location.href.split('?')[0].replace(/\/+$/, ""); // Remove trailing slashes
+            $('.app-sidebar a.treeview-item, .app-sidebar a.app-menu__item').each(function() {
+                var $link = $(this);
+                var linkUrl = ($link.attr('href') || '').split('?')[0].replace(/\/+$/, "");
+                
+                if (linkUrl && (currentUrl === linkUrl || currentUrl.indexOf(linkUrl + '/') === 0)) {
+                    $link.addClass('active');
+                    var $parentTree = $link.closest('.treeview');
+                    if ($parentTree.length) {
+                        $parentTree.addClass('is-expanded');
+                    }
+                }
+            });
+        }
+
+        // Run conversions and highlights on load
         convertButtonsToIcons();
         convertSidebarIcons();
+        highlightActiveSidebar();
 
         // Run conversion whenever DataTables draws/redraws the table rows
         $(document).on('draw.dt', function() {
@@ -207,6 +254,14 @@
             setTimeout(function() {
                 $loader.remove();
             }, 400);
+        });
+
+        // Listen to sidebar toggle button click to save minimized preference
+        $('.app-sidebar__toggle').on('click', function() {
+            setTimeout(function() {
+                var isMinimized = $('body').hasClass('sidenav-toggled');
+                localStorage.setItem('sidebar-minimized', isMinimized);
+            }, 100);
         });
     });
     </script>
