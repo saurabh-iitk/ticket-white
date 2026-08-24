@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('assets/css/software-landing.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/software-landing.css') }}?v={{ file_exists(public_path('assets/css/software-landing.css')) ? filemtime(public_path('assets/css/software-landing.css')) : time() }}">
     
     @yield('styles')
 </head>
