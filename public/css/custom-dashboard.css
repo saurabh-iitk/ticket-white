@@ -1,0 +1,671 @@
+/* BookMyTicket Dashboard Theme Override Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* Force Plus Jakarta Sans Font globally in Dashboard */
+body, .app, .app-content, h1, h2, h3, h4, h5, h6, select, input, button, textarea, table, th, td, label {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+body.app {
+    background-color: #f8fafc !important;
+}
+
+/* ==========================================
+   BLUE & LIGHT SIDEBAR THEME STYLINGS
+   ========================================== */
+
+/* Custom Header Styling (Blue Theme) */
+.app-header {
+    background-color: #0f172a !important; /* Dark Slate Navy Header */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    height: 55px !important;
+}
+
+.app-header__logo {
+    background-color: #0f172a !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    height: 55px !important;
+    line-height: 55px !important;
+    padding: 0 15px !important;
+}
+
+.app-sidebar__toggle {
+    color: #cbd5e1 !important;
+    background-color: transparent !important;
+    line-height: 55px !important;
+    height: 55px !important;
+    width: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+}
+.app-sidebar__toggle:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.app-nav__item {
+    line-height: 55px !important;
+    padding: 0 15px !important;
+}
+
+/* Sidebar Custom Styling (Light Slate-Blue Theme) */
+.app-sidebar {
+    background-color: #ffffff !important;
+    border-right: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01) !important;
+    padding-top: 55px !important;
+    width: 220px !important;
+}
+
+.app-sidebar__user {
+    background-color: #f8fafc !important;
+    border-radius: 10px !important;
+    margin: 10px !important;
+    padding: 10px !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+.app-sidebar__user-avatar {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.app-sidebar__user-name {
+    color: #0f172a !important; /* Dark slate */
+    font-weight: 600 !important;
+    font-size: 13px !important;
+}
+
+.app-sidebar__user-designation {
+    color: #64748b !important; /* Slate grey */
+    font-size: 11px !important;
+}
+
+/* Menu Items (Active Blue Theme on White) */
+.app-menu__item {
+    color: #475569 !important; /* Slate-600 */
+    border-left: 3px solid transparent !important;
+    padding: 10px 15px !important;
+    font-size: 13.5px !important;
+    transition: all 0.2s ease !important;
+    font-weight: 500 !important;
+}
+
+.app-menu__item:hover, .app-menu__item:focus {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+.app-menu__item.active {
+    background-color: #eff6ff !important; /* Light blue */
+    color: #2563eb !important; /* Active blue */
+    border-left-color: #2563eb !important;
+    font-weight: 600 !important;
+}
+
+.treeview.is-expanded [data-toggle="treeview"] {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    border-left-color: #2563eb !important;
+}
+
+.treeview-menu {
+    background-color: #ffffff !important;
+    border-left: 2px solid #f1f5f9 !important;
+    margin-left: 17px !important;
+    padding-left: 5px !important;
+}
+
+.treeview-item {
+    color: #64748b !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    padding: 8px 10px 8px 15px !important;
+}
+.treeview-item:hover, .treeview-item:focus {
+    color: #0f172a !important;
+    background-color: #f1f5f9 !important;
+}
+.treeview-item.active {
+    color: #2563eb !important;
+    background-color: #eff6ff !important;
+    font-weight: 600 !important;
+}
+
+/* Toggle arrow treeview-indicator */
+.treeview-indicator {
+    color: #94a3b8 !important;
+    font-size: 11px !important;
+}
+
+/* Sidebar Icons Color */
+.app-menu__icon, .icon {
+    color: #64748b !important;
+    font-size: 15px !important;
+}
+.app-menu__item.active .app-menu__icon,
+.treeview-item.active .icon {
+    color: #2563eb !important;
+}
+
+/* Text Highlights and Breadcrumbs */
+.tile-title span, .app-title h1 span, span[style*="color:#17a2b8"], span[style*="color: #17a2b8"] {
+    color: #2563eb !important;
+}
+.breadcrumb-item a {
+    color: #2563eb !important;
+}
+
+.app-title {
+    padding: 15px 20px !important;
+    margin: -15px -15px 15px !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02) !important;
+}
+.app-title h1 {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+.app-content {
+    padding: 20px !important;
+    margin-left: 220px !important;
+    margin-top: 55px !important;
+}
+
+/* ==========================================
+   FORM & TABLE STYLINGS
+   ========================================== */
+
+/* Modernized Compact Card Tiles */
+.tile {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.tile:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03) !important;
+}
+
+.tile-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-bottom: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+/* Modernized Compact Widget Cards */
+.widget-small {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 12px 18px !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01) !important;
+    margin-bottom: 20px !important;
+    height: 76px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+/* Make the icon block circular and soft-colored */
+.widget-small .icon {
+    min-width: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    margin-right: 14px !important;
+    box-shadow: none !important;
+}
+
+/* Specific circular colors */
+.widget-small.primary .icon {
+    background-color: rgba(37, 99, 235, 0.08) !important;
+    color: #2563eb !important;
+}
+.widget-small.info .icon {
+    background-color: rgba(16, 185, 129, 0.08) !important;
+    color: #10b981 !important;
+}
+.widget-small.warning .icon {
+    background-color: rgba(245, 158, 11, 0.08) !important;
+    color: #f59e0b !important;
+}
+.widget-small.danger .icon {
+    background-color: rgba(239, 68, 68, 0.08) !important;
+    color: #ef4444 !important;
+}
+
+/* The text content info block */
+.widget-small .info {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.widget-small .info h4 {
+    margin: 0 0 2px 0 !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+.widget-small .info p {
+    margin: 0 !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+}
+.widget-small .info p b {
+    font-weight: 800 !important;
+    color: #0f172a !important;
+}
+
+/* Compact Forms & Labels */
+.form-group {
+    margin-bottom: 15px !important;
+}
+.form-group label {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #475569 !important;
+    margin-bottom: 6px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+.form-control {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 8px 12px !important;
+    font-size: 13.5px !important;
+    line-height: 1.42857 !important;
+    color: #1e293b !important;
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.01) !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out !important;
+    box-sizing: border-box !important;
+}
+.form-control:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+    outline: none !important;
+    background-color: #ffffff !important;
+}
+select.form-control {
+    appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    background-size: 14px !important;
+    padding-right: 32px !important;
+}
+textarea.form-control {
+    min-height: 80px !important;
+    resize: vertical !important;
+}
+
+/* Modern Compact Tables Override */
+.table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+}
+.table th {
+    background-color: #f8fafc !important;
+    color: #475569 !important;
+    font-weight: 600 !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    padding: 10px 12px !important;
+    border: none !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    text-align: left !important;
+}
+.table td {
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+    color: #334155 !important;
+    border: none !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    vertical-align: middle !important;
+    transition: background-color 0.2s ease !important;
+}
+.table-hover tbody tr:hover td {
+    background-color: #f8fafc !important;
+}
+.table-bordered th, .table-bordered td {
+    border: none !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+}
+.table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Clean Custom Buttons Override */
+.btn {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease-in-out !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
+}
+.btn-sm {
+    padding: 5px 10px !important;
+    font-size: 11.5px !important;
+    border-radius: 6px !important;
+}
+.btn-info {
+    background-color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+    color: #ffffff !important;
+}
+.btn-info:hover, .btn-info:focus {
+    background-color: #2563eb !important;
+    border-color: #2563eb !important;
+    color: #ffffff !important;
+}
+.btn-primary {
+    background-color: #10b981 !important;
+    border-color: #10b981 !important;
+    color: #ffffff !important;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #059669 !important;
+    border-color: #059669 !important;
+    color: #ffffff !important;
+}
+.btn-danger {
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+.btn-danger:hover, .btn-danger:focus {
+    background-color: #dc2626 !important;
+    border-color: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+/* DataTables Styling Overrides */
+.dataTables_wrapper .dataTables_length select {
+    padding: 5px 10px !important;
+    border-radius: 6px !important;
+    border: 1px solid #cbd5e1 !important;
+    outline: none !important;
+    background-color: #ffffff !important;
+}
+.dataTables_wrapper .dataTables_filter input {
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+    border: 1px solid #cbd5e1 !important;
+    outline: none !important;
+    margin-left: 6px !important;
+    transition: all 0.2s ease !important;
+}
+.dataTables_wrapper .dataTables_filter input:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+}
+.dataTables_wrapper .dataTables_info {
+    color: #64748b !important;
+    font-size: 12px !important;
+    padding-top: 10px !important;
+}
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 10px !important;
+}
+
+/* Fix DataTables + Bootstrap Pagination Double Borders */
+.dataTables_wrapper .dataTables_paginate .paginate_button.page-item {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 2px !important;
+    box-shadow: none !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.page-item .page-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+    border: 1px solid #cbd5e1 !important;
+    background-color: #ffffff !important;
+    color: #475569 !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.page-item.active .page-link {
+    background-color: #2563eb !important; /* Premium active blue */
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.page-item:not(.active):not(.disabled) .page-link:hover {
+    background-color: #f1f5f9 !important;
+    color: #1e293b !important;
+    border-color: #3b82f6 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.page-item.disabled .page-link {
+    background-color: #f8fafc !important;
+    color: #94a3b8 !important;
+    border-color: #cbd5e1 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
+
+/* Fallback for plain non-Bootstrap DataTables pagination */
+.dataTables_wrapper .dataTables_paginate .paginate_button:not(.page-item) {
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+    border: 1px solid #cbd5e1 !important;
+    margin: 0 2px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    background: #ffffff !important;
+    color: #475569 !important;
+    cursor: pointer !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02) !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:not(.page-item).current, 
+.dataTables_wrapper .dataTables_paginate .paginate_button:not(.page-item).current:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:not(.page-item):hover:not(.current):not(.disabled) {
+    background: #f1f5f9 !important;
+    color: #1e293b !important;
+    border-color: #3b82f6 !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:not(.page-item).disabled {
+    background-color: #f8fafc !important;
+    color: #94a3b8 !important;
+    border-color: #cbd5e1 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
+
+/* Beautiful Status Badges */
+.status-badge, .badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 3px 8px !important;
+    border-radius: 12px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.01) !important;
+}
+.badge-success, .status-active {
+    background-color: rgba(16, 185, 129, 0.08) !important;
+    color: #10b981 !important;
+}
+.badge-danger, .status-inactive {
+    background-color: rgba(239, 68, 68, 0.08) !important;
+    color: #ef4444 !important;
+}
+.badge-warning {
+    background-color: rgba(245, 158, 11, 0.08) !important;
+    color: #f59e0b !important;
+}
+.badge-secondary {
+    background-color: rgba(100, 116, 139, 0.08) !important;
+    color: #64748b !important;
+}
+
+/* Compact Premium Action Buttons inside Table cells (SaaS style) */
+.table td .btn {
+    padding: 0 !important;
+    border-radius: 50% !important; /* circular buttons */
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 1px 3px !important;
+    border: none !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+}
+
+.table td .btn i {
+    font-size: 10px !important;
+    margin: 0 !important;
+}
+
+/* View Button - Soft Blue */
+.table td .btn-info, .table td .btn[class*="info"] {
+    background-color: rgba(37, 99, 235, 0.08) !important;
+    color: #2563eb !important;
+}
+.table td .btn-info:hover, .table td .btn-info:focus {
+    background-color: rgba(37, 99, 235, 0.16) !important;
+    color: #1d4ed8 !important;
+}
+
+/* Edit Button - Soft Emerald Green */
+.table td .btn-primary, .table td .btn[class*="primary"] {
+    background-color: rgba(16, 185, 129, 0.08) !important;
+    color: #10b981 !important;
+}
+.table td .btn-primary:hover, .table td .btn-primary:focus {
+    background-color: rgba(16, 185, 129, 0.16) !important;
+    color: #047857 !important;
+}
+
+/* Delete Button - Soft Red */
+.table td .btn-danger, .table td .btn[class*="danger"] {
+    background-color: rgba(239, 68, 68, 0.08) !important;
+    color: #ef4444 !important;
+}
+.table td .btn-danger:hover, .table td .btn-danger:focus {
+    background-color: rgba(239, 68, 68, 0.16) !important;
+    color: #b91c1c !important;
+}
+
+.table td form {
+    margin: 0 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+/* ==========================================
+   MINIMIZED SIDEBAR (SIDEBAR-MINI) CORRECTIONS
+   ========================================== */
+@media (min-width: 768px) {
+    /* Center user profile avatar & remove card constraints */
+    .sidebar-mini.sidenav-toggled .app-sidebar__user {
+        margin: 10px auto !important;
+        padding: 0 !important;
+        background-color: transparent !important;
+        border: none !important;
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    
+    .sidebar-mini.sidenav-toggled .app-sidebar__user-avatar {
+        width: 30px !important;
+        height: 30px !important;
+        margin: 0 !important;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+    }
+
+    /* Center navigation icons in 50px sidebar width */
+    .sidebar-mini.sidenav-toggled .app-menu__item {
+        padding: 10px 0 !important;
+        justify-content: center !important;
+        display: flex !important;
+    }
+    
+    .sidebar-mini.sidenav-toggled .app-menu__icon {
+        width: auto !important;
+        margin: 0 !important;
+        font-size: 15px !important;
+        display: inline-block !important;
+        text-align: center !important;
+    }
+
+    /* Hover labels styling for minimized sidebar */
+    .sidebar-mini.sidenav-toggled .app-menu__item:hover .app-menu__label,
+    .sidebar-mini.sidenav-toggled .treeview:hover .app-menu__item,
+    .sidebar-mini.sidenav-toggled .treeview:hover .app-menu__label {
+        background-color: #f1f5f9 !important;
+        color: #0f172a !important;
+        opacity: 1 !important;
+    }
+
+    /* Submenus container styling on hover */
+    .sidebar-mini.sidenav-toggled .treeview-menu {
+        background-color: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-left: none !important;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05) !important;
+        border-top-right-radius: 8px !important;
+        border-bottom-right-radius: 8px !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+}

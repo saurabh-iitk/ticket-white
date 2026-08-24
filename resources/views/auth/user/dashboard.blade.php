@@ -14,12 +14,56 @@
         </ul>
     </div>
 
+    <!-- Row 1: Primary Metrics -->
     <div class="row">
         <div class="col-md-6 col-lg-3">
             <div class="widget-small primary coloured-icon">
-                <i class="icon fa fa-users fa-3x"></i>
+                <i class="icon fa-solid fa-indian-rupee-sign"></i>
                 <div class="info">
-                    <h4>Users</h4>
+                    <h4>Gross Sales</h4>
+                    <p><b>₹{{ number_format(\App\Models\Booking::sum('paid_amount') ?? 0) }}</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small info coloured-icon">
+                <i class="icon fa-solid fa-ticket"></i>
+                <div class="info">
+                    <h4>Total Bookings</h4>
+                    <p><b>{{ \App\Models\Booking::count() }}</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small warning coloured-icon">
+                <i class="icon fa-solid fa-calendar-check"></i>
+                <div class="info">
+                    <h4>Active Events</h4>
+                    <p><b>{{ \App\Models\Event::where('status','ACTIVE')->count() }}</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small danger coloured-icon">
+                <i class="icon fa-solid fa-hotel"></i>
+                <div class="info">
+                    <h4>Listed Venues</h4>
+                    <p><b>{{ \App\Models\Venue::count() }}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2: Secondary Metrics -->
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small primary coloured-icon">
+                <i class="icon fa-solid fa-users"></i>
+                <div class="info">
+                    <h4>Registered Users</h4>
                     <p><b>{{ \App\Models\User::where('status','ACTIVE')->count() }}</b></p>
                 </div>
             </div>
@@ -27,7 +71,7 @@
 
         <div class="col-md-6 col-lg-3">
             <div class="widget-small info coloured-icon">
-                <i class="icon fa fa-thumbs-o-up fa-3x"></i>
+                <i class="icon fa-solid fa-user-tie"></i>
                 <div class="info">
                     <h4>Organizers</h4>
                     <p><b>{{ \App\Models\Organizer::where('status','ACTIVE')->count() }}</b></p>
@@ -37,20 +81,20 @@
 
         <div class="col-md-6 col-lg-3">
             <div class="widget-small warning coloured-icon">
-                <i class="icon fa fa-files-o fa-3x"></i>
+                <i class="icon fa-solid fa-tags"></i>
                 <div class="info">
-                    <h4>Events</h4>
-                    <p><b>{{ \App\Models\Event::where('status','ACTIVE')->count() }}</b></p>
+                    <h4>Active Coupons</h4>
+                    <p><b>{{ \App\Models\Coupon::where('status','ACTIVE')->count() }}</b></p>
                 </div>
             </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
             <div class="widget-small danger coloured-icon">
-                <i class="icon fa fa-star fa-3x"></i>
+                <i class="icon fa-solid fa-ban"></i>
                 <div class="info">
-                    <h4>Event Tickets</h4>
-                    <p><b>{{ \App\Models\EventTicket::where('status','ACTIVE')->count() }}</b></p>
+                    <h4>Cancelled Bookings</h4>
+                    <p><b>{{ \App\Models\CancelledBooking::count() }}</b></p>
                 </div>
             </div>
         </div>

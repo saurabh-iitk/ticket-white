@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CancelledBooking extends Model
 {
-    use SoftDeletes;
 
     protected $table = "cancelled_bookings";
     protected $primaryKey = "id";

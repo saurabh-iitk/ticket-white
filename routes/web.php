@@ -60,6 +60,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/', [SoftwareLandingController::class, 'home'])->name('software.home');
 Route::get('/features', [SoftwareLandingController::class, 'features'])->name('software.features');
 Route::get('/pricing', [SoftwareLandingController::class, 'pricing'])->name('software.pricing');
+Route::get('/industry', [SoftwareLandingController::class, 'industry'])->name('software.industry');
 Route::post('/contact-submit', [SoftwareLandingController::class, 'submitContact'])->name('software.contact.submit');
 Route::get('/user-register', [HomeController::class,'user_register'])->name('user-register');
 Route::get('/user-login', [HomeController::class,'user_login'])->name('user-login');

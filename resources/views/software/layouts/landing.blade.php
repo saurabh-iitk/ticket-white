@@ -38,18 +38,16 @@
             </a>
             
             <ul class="nav-menu">
-                <li><a href="{{ route('software.home') }}#features-grid" class="nav-link">Platform <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a></li>
-                <li><a href="{{ route('software.home') }}#solutions" class="nav-link">Solutions <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a></li>
+                <li><a href="{{ route('software.features') }}" class="nav-link {{ Route::is('software.features') ? 'active' : '' }}">Features</a></li>
                 <li><a href="{{ route('software.pricing') }}" class="nav-link {{ Route::is('software.pricing') ? 'active' : '' }}">Pricing</a></li>
-                <li><a href="{{ route('software.home') }}#analytics-charts-section" class="nav-link">Resources <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a></li>
+                <li><a href="{{ route('software.industry') }}" class="nav-link {{ Route::is('software.industry') ? 'active' : '' }}">Industry</a></li>
             </ul>
             
             <div class="nav-right-desktop">
                 <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme">
                     <i class="fa-solid fa-moon"></i>
                 </button>
-                <a href="{{ route('user-login') }}" class="nav-link" style="font-weight: 500;">Login</a>
-                <a href="{{ route('software.contact') }}#contact-form-section" class="nav-cta">Book a Demo</a>
+                <a href="{{ route('software.contact') }}#contact-form-section" class="nav-cta">View Demo</a>
             </div>
             
             <button class="mobile-nav-toggle" id="mobileMenuOpen">
@@ -72,11 +70,10 @@
         </div>
         <ul class="sidebar-menu">
             <li><a href="{{ route('software.home') }}" class="sidebar-link">Home</a></li>
-            <li><a href="{{ route('software.home') }}#features-grid" class="sidebar-link">Platform</a></li>
-            <li><a href="{{ route('software.home') }}#solutions" class="sidebar-link">Solutions</a></li>
-            <li><a href="{{ route('software.pricing') }}" class="sidebar-link">Pricing</a></li>
-            <li><a href="{{ route('user-login') }}" class="sidebar-link">Login</a></li>
-            <li><a href="{{ route('software.contact') }}#contact-form-section" class="sidebar-cta">Book a Demo</a></li>
+            <li><a href="{{ route('software.features') }}" class="sidebar-link {{ Route::is('software.features') ? 'active' : '' }}">Features</a></li>
+            <li><a href="{{ route('software.pricing') }}" class="sidebar-link {{ Route::is('software.pricing') ? 'active' : '' }}">Pricing</a></li>
+            <li><a href="{{ route('software.industry') }}" class="sidebar-link {{ Route::is('software.industry') ? 'active' : '' }}">Industry</a></li>
+            <li><a href="{{ route('software.contact') }}#contact-form-section" class="sidebar-cta">View Demo</a></li>
         </ul>
     </div>
 
@@ -143,7 +140,9 @@
                     <ul class="footer-links-list">
                         <li><a href="#">About</a></li>
                         <li><a href="{{ route('software.contact') }}">Contact</a></li>
+                        <li><a href="{{ route('software.features') }}">Features</a></li>
                         <li><a href="{{ route('software.pricing') }}">Pricing</a></li>
+                        <li><a href="{{ route('software.industry') }}">Industry</a></li>
                     </ul>
                 </div>
             </div>

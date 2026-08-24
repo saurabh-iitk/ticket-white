@@ -35,6 +35,14 @@ class SoftwareLandingController extends Controller
     }
 
     /**
+     * Display the software industry page.
+     */
+    public function industry()
+    {
+        return view('software.industry');
+    }
+
+    /**
      * Display the software contact us page.
      */
     public function contact()
