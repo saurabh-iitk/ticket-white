@@ -44,7 +44,7 @@
                 <li><a href="{{ route('software.home') }}#analytics-charts-section" class="nav-link">Resources <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a></li>
             </ul>
             
-            <div style="display: flex; align-items: center; gap: 20px;" class="nav-right-desktop">
+            <div class="nav-right-desktop">
                 <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme">
                     <i class="fa-solid fa-moon"></i>
                 </button>

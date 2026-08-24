@@ -78,7 +78,7 @@
 
     <!-- Interactive Demonstration Highlight -->
     <section style="background-color: var(--secondary-bg); padding: 80px 0; border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark);">
-        <div class="stg-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+        <div class="stg-container interactive-demo-grid">
             <div>
                 <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">Category vs. Seating Layout Booking</h2>
                 <p style="color: var(--text-muted); margin-bottom: 20px;">BookMyTicket Software accommodates both business models in a single, stable installation. Whether you are running a cinema theater needing precise seat selection or a standing concert requiring broad entry passes, the platform handles it fluidly.</p>
