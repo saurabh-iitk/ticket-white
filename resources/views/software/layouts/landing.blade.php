@@ -4,35 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'BookMyTicket Software - Event Ticket Booking Platform')</title>
+    <title>@yield('title', 'BookMyTicket - Enterprise Event Ticketing SaaS Platform')</title>
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Stylesheet -->
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="{{ asset('assets/css/software-landing.css') }}">
     
     @yield('styles')
 </head>
-<body>
+<body class="light-theme">
+    <!-- Immediate theme block to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.body.classList.remove('light-theme');
+            }
+        })();
+    </script>
 
     <!-- Header Navigation -->
     <header class="landing-header" id="mainHeader">
         <div class="header-container">
             <a href="{{ route('software.home') }}" class="logo-link">
-                <i class="fa-solid fa-ticket"></i> BookMy<span>Ticket</span>
+                <i class="fa-solid fa-ticket" style="color: var(--accent-blue);"></i> Book My<span>Ticket</span>
             </a>
             
             <ul class="nav-menu">
-                <li><a href="{{ route('software.home') }}" class="nav-link {{ Route::is('software.home') ? 'active' : '' }}">Home</a></li>
-                <li><a href="{{ route('software.features') }}" class="nav-link {{ Route::is('software.features') ? 'active' : '' }}">Features</a></li>
+                <li><a href="{{ route('software.home') }}#features-grid" class="nav-link">Platform <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a></li>
+                <li><a href="{{ route('software.home') }}#solutions" class="nav-link">Solutions <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a></li>
                 <li><a href="{{ route('software.pricing') }}" class="nav-link {{ Route::is('software.pricing') ? 'active' : '' }}">Pricing</a></li>
-                <li><a href="{{ route('software.contact') }}" class="nav-link {{ Route::is('software.contact') ? 'active' : '' }}">Contact Us</a></li>
-                <li><a href="{{ route('software.contact') }}#contact-form-section" class="nav-cta">Book a Demo</a></li>
+                <li><a href="{{ route('software.home') }}#analytics-charts-section" class="nav-link">Resources <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a></li>
             </ul>
+            
+            <div style="display: flex; align-items: center; gap: 20px;" class="nav-right-desktop">
+                <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="{{ route('user-login') }}" class="nav-link" style="font-weight: 500;">Login</a>
+                <a href="{{ route('software.contact') }}#contact-form-section" class="nav-cta">Book a Demo</a>
+            </div>
             
             <button class="mobile-nav-toggle" id="mobileMenuOpen">
                 <i class="fa-solid fa-bars"></i>
@@ -46,11 +64,18 @@
         <button class="sidebar-close" id="mobileMenuClose">
             <i class="fa-solid fa-xmark"></i>
         </button>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding: 0 10px;">
+            <span style="font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Theme</span>
+            <button id="mobileThemeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
         <ul class="sidebar-menu">
             <li><a href="{{ route('software.home') }}" class="sidebar-link">Home</a></li>
-            <li><a href="{{ route('software.features') }}" class="sidebar-link">Features</a></li>
+            <li><a href="{{ route('software.home') }}#features-grid" class="sidebar-link">Platform</a></li>
+            <li><a href="{{ route('software.home') }}#solutions" class="sidebar-link">Solutions</a></li>
             <li><a href="{{ route('software.pricing') }}" class="sidebar-link">Pricing</a></li>
-            <li><a href="{{ route('software.contact') }}" class="sidebar-link">Contact Us</a></li>
+            <li><a href="{{ route('user-login') }}" class="sidebar-link">Login</a></li>
             <li><a href="{{ route('software.contact') }}#contact-form-section" class="sidebar-cta">Book a Demo</a></li>
         </ul>
     </div>
@@ -64,11 +89,12 @@
     <footer class="landing-footer">
         <div class="stg-container">
             <div class="footer-grid">
+                <!-- Brand block -->
                 <div class="footer-logo-block">
                     <a href="{{ route('software.home') }}" class="logo-link">
-                        <i class="fa-solid fa-ticket"></i> BookMy<span>Ticket</span>
+                        <i class="fa-solid fa-ticket" style="color: var(--accent-blue);"></i> Book My<span>Ticket</span>
                     </a>
-                    <p>Next-generation ticketing SaaS software that empowers event organizers with flexible categories and seat-layout based bookings. Scale your venue operations seamlessly.</p>
+                    <p>The modern event ticketing platform for organizers, venues and businesses. Simplify your sales and operations.</p>
                     <div class="social-links">
                         <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" class="social-btn"><i class="fa-brands fa-twitter"></i></a>
@@ -77,41 +103,58 @@
                     </div>
                 </div>
                 
+                <!-- Col 1 -->
                 <div class="footer-links-block">
-                    <h4>Product</h4>
+                    <h4>Platform</h4>
                     <ul class="footer-links-list">
-                        <li><a href="{{ route('software.home') }}">Home</a></li>
-                        <li><a href="{{ route('software.features') }}">Features</a></li>
-                        <li><a href="{{ route('software.pricing') }}">Pricing Plans</a></li>
-                        <li><a href="{{ route('software.home') }}#demo-widget">Live Demo</a></li>
+                        <li><a href="{{ route('software.home') }}#features-grid">Ticketing</a></li>
+                        <li><a href="{{ route('software.home') }}#features-grid">Event Management</a></li>
+                        <li><a href="{{ route('software.home') }}#seating-section">Seat Mapping</a></li>
+                        <li><a href="{{ route('software.home') }}#analytics-charts-section">Analytics</a></li>
+                        <li><a href="{{ route('software.home') }}#operations-section">Check-in</a></li>
                     </ul>
                 </div>
                 
+                <!-- Col 2 -->
+                <div class="footer-links-block">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="{{ route('software.home') }}#solutions">Organizers</a></li>
+                        <li><a href="{{ route('software.home') }}#solutions">Venues</a></li>
+                        <li><a href="{{ route('software.home') }}#solutions">Festivals</a></li>
+                        <li><a href="{{ route('software.home') }}#solutions">Corporate</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div class="footer-links-block">
+                    <h4>Resources</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Status</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Col 4 -->
                 <div class="footer-links-block">
                     <h4>Company</h4>
                     <ul class="footer-links-list">
-                        <li><a href="{{ route('software.contact') }}">Contact Us</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="{{ route('software.contact') }}">Contact</a></li>
+                        <li><a href="{{ route('software.pricing') }}">Pricing</a></li>
                     </ul>
-                </div>
-                
-                <div class="footer-newsletter">
-                    <h4>Request Sandbox</h4>
-                    <p>Enter your business email below to request sandbox dashboard access credentials.</p>
-                    <form class="footer-newsletter-form" id="footerLeadForm">
-                        @csrf
-                        <input type="hidden" name="type" value="popup_newsletter">
-                        <input type="email" name="email" class="input-field" placeholder="business@email.com" required>
-                        <button type="submit" class="btn-primary">Request</button>
-                    </form>
-                    <div style="margin-top: 10px; font-size: 13px;" id="footerLeadMsg"></div>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; {{ date('Y') }} BookMyTicket Software. All rights reserved. Powered by stable next-gen ticketing technology.</p>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <p>&copy; {{ date('Y') }} BookMyTicket. All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#" class="nav-link" style="font-size: 13px;">Privacy</a>
+                    <a href="#" class="nav-link" style="font-size: 13px;">Terms</a>
+                    <a href="#" class="nav-link" style="font-size: 13px;">Security</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -149,38 +192,28 @@
             $('#sidebarOverlay').click(closeMenu);
             $('.sidebar-link, .sidebar-cta').click(closeMenu);
 
-            // Footer lead form submission
-            $('#footerLeadForm').submit(function(e) {
-                e.preventDefault();
-                const $form = $(this);
-                const $msgDiv = $('#footerLeadMsg');
-                const $btn = $form.find('button');
-                
-                $btn.prop('disabled', true).text('Sending...');
-                $msgDiv.removeClass('success error').text('');
+            // Theme Toggle Logic
+            const themeToggleBtns = $('#themeToggleBtn, #mobileThemeToggleBtn');
+            
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    $('body').addClass('light-theme');
+                    themeToggleBtns.find('i').removeClass('fa-moon').addClass('fa-sun');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    $('body').removeClass('light-theme');
+                    themeToggleBtns.find('i').removeClass('fa-sun').addClass('fa-moon');
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
 
-                $.ajax({
-                    url: "{{ route('software.contact.submit') }}",
-                    method: "POST",
-                    data: $form.serialize(),
-                    success: function(response) {
-                        $btn.prop('disabled', false).text('Request');
-                        if (response.success) {
-                            $msgDiv.css('color', '#10b981').text(response.message);
-                            $form.trigger('reset');
-                        } else {
-                            $msgDiv.css('color', '#ef4444').text('An error occurred. Please try again.');
-                        }
-                    },
-                    error: function(xhr) {
-                        $btn.prop('disabled', false).text('Request');
-                        let errorMsg = 'Failed to submit. Please check your email.';
-                        if (xhr.responseJSON && xhr.responseJSON.errors) {
-                            errorMsg = Object.values(xhr.responseJSON.errors)[0][0];
-                        }
-                        $msgDiv.css('color', '#ef4444').text(errorMsg);
-                    }
-                });
+            // Check saved preference (default to light)
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+            
+            themeToggleBtns.click(function() {
+                const isLight = $('body').hasClass('light-theme');
+                applyTheme(isLight ? 'dark' : 'light');
             });
         });
     </script>
