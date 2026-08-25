@@ -2,6 +2,43 @@
 
 @section('title', 'Edit/Setting')
 
+@section('css')
+<style>
+/* Enforce Blue Theme on Settings Page vertical tabs */
+.user .user-tabs .nav-link {
+    border: none !important;
+    border-left: 3px solid transparent !important;
+    padding: 12px 18px !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    transition: all 0.2s ease;
+}
+
+.user .user-tabs .nav-link:hover {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    border-left-color: #cbd5e1 !important;
+}
+
+.user .user-tabs .nav-link.active {
+    background-color: #eff6ff !important;
+    color: #2563eb !important;
+    border-left-color: #2563eb !important;
+    font-weight: 600 !important;
+}
+
+.user .tile {
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+</style>
+@endsection
+
 @section('content')
     <main class="app-content">
         <div class="app-title">
@@ -98,6 +135,7 @@
                             </div>
                             </form>
                         </div>
+                    </div>
 
                         <div class="tab-pane fade {{ Request::get('tab') == 'contact-setting' ? 'active show' : '' }}"
                             id="contact-setting">

@@ -611,14 +611,21 @@ textarea.form-control {
 }
 
 /* DataTables Export Buttons Wrapper & Buttons Styling */
-.dt-buttons, .dt-buttons.btn-group {
+.dt-buttons,
+.dt-buttons.btn-group {
     margin-bottom: 15px !important;
     display: inline-flex !important;
     gap: 8px !important;
     flex-wrap: wrap !important;
 }
 
-.dt-button, .buttons-html5, .buttons-csv, .buttons-excel, .buttons-pdf, .buttons-print, .buttons-copy {
+.dt-button,
+.buttons-html5,
+.buttons-csv,
+.buttons-excel,
+.buttons-pdf,
+.buttons-print,
+.buttons-copy {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -635,7 +642,13 @@ textarea.form-control {
     margin: 0 !important;
 }
 
-.dt-button:hover, .buttons-html5:hover, .buttons-csv:hover, .buttons-excel:hover, .buttons-pdf:hover, .buttons-print:hover, .buttons-copy:hover {
+.dt-button:hover,
+.buttons-html5:hover,
+.buttons-csv:hover,
+.buttons-excel:hover,
+.buttons-pdf:hover,
+.buttons-print:hover,
+.buttons-copy:hover {
     background-color: #2563eb !important;
     color: #ffffff !important;
     border-color: #2563eb !important;
@@ -644,7 +657,13 @@ textarea.form-control {
     text-decoration: none !important;
 }
 
-.dt-button:active, .buttons-html5:active, .buttons-csv:active, .buttons-excel:active, .buttons-pdf:active, .buttons-print:active, .buttons-copy:active {
+.dt-button:active,
+.buttons-html5:active,
+.buttons-csv:active,
+.buttons-excel:active,
+.buttons-pdf:active,
+.buttons-print:active,
+.buttons-copy:active {
     transform: translateY(0) !important;
 }
 
@@ -955,9 +974,20 @@ textarea.form-control {
 }
 
 @keyframes pulse-live {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 4px rgba(22, 163, 74, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 4px rgba(22, 163, 74, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+    }
 }
 
 .sales-header-widgets {
@@ -975,7 +1005,7 @@ textarea.form-control {
     align-items: center;
     gap: 12px;
     min-width: 170px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .widget-card-icon {
@@ -1061,11 +1091,11 @@ textarea.form-control {
     border-radius: 50%;
 }
 
-.custom-switch-toggle input:checked + .switch-slider {
+.custom-switch-toggle input:checked+.switch-slider {
     background-color: #22c55e;
 }
 
-.custom-switch-toggle input:checked + .switch-slider:before {
+.custom-switch-toggle input:checked+.switch-slider:before {
     transform: translateX(16px);
 }
 
@@ -1101,4 +1131,57 @@ textarea.form-control {
     height: 10px;
     border-radius: 50%;
     display: inline-block;
+}
+
+/* User settings dropdown menu width */
+.dropdown-menu.settings-menu,
+.settings-menu {
+    min-width: 200px !important;
+}
+
+.settings-menu .dropdown-item {
+    white-space: nowrap !important;
+}
+
+/* User Profile and Settings Tabs Revamp */
+.user .user-tabs {
+    border-right: 1px solid #e2e8f0;
+    margin-top: 0;
+}
+
+.user .user-tabs .nav-link {
+    border: none !important;
+    border-left: 3px solid transparent !important;
+    padding: 12px 18px !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    border-radius: 0 !important;
+    transition: all 0.2s ease;
+    background: transparent !important;
+}
+
+.user .user-tabs .nav-link:hover {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    border-left-color: #cbd5e1 !important;
+}
+
+.user .user-tabs .nav-link.active {
+    background-color: #eff6ff !important;
+    color: #2563eb !important;
+    border-left-color: #2563eb !important;
+    font-weight: 600 !important;
+}
+
+/* Fix user tile styling */
+.user .tile {
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.user .tab-content {
+    margin-top: 0 !important;
 }

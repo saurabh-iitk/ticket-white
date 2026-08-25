@@ -15,6 +15,7 @@
     </div>
 
     <!-- Row 1: Primary Metrics -->
+    @if(Session::has('permissions') && in_array('admin_action', Session::get('permissions')->toArray()))
     <div class="row">
         <div class="col-md-6 col-lg-3">
             <div class="widget-small primary coloured-icon">
@@ -56,6 +57,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     <!-- Row 2: Secondary Metrics -->
     <div class="row">
@@ -113,7 +115,7 @@ $cityName = optional($city)->name ?? 'City';
     <div class="col-md-6">
         <div class="tile">
             <h3 class="tile-title">
-                <span style="color:#17a2b8">{{ ucwords(strtolower($cityName)) }}</span> Daily Show Viewers
+                <span style="color:#2563eb">{{ ucwords(strtolower($cityName)) }}</span> Daily Show Viewers
             </h3>
             <div class="embed-responsive embed-responsive-16by9">
                 <canvas class="embed-responsive-item" id="monthlySales"></canvas>
@@ -124,7 +126,7 @@ $cityName = optional($city)->name ?? 'City';
     <div class="col-md-6">
         <div class="tile">
             <h3 class="tile-title">
-                <span style="color:#17a2b8">{{ ucwords(strtolower($cityName)) }}</span> Break-Even
+                <span style="color:#2563eb">{{ ucwords(strtolower($cityName)) }}</span> Break-Even
             </h3>
             <div class="embed-responsive embed-responsive-16by9">
                 <canvas class="embed-responsive-item" id="dailySales"></canvas>
@@ -188,73 +190,131 @@ if(empty($daily_labels)){
 
 
 <script>
-
-var data = {
-    labels: {!! json_encode($labels) !!},
-    datasets: [{
-        label: "Daily Viewers Count",
-        data: {!! json_encode($booking_count_data) !!},
-        backgroundColor: "#b2ede7",
-        borderColor: "#009688",
-        borderWidth: 2
-    }]
-};
-
-var ctx1 = document.getElementById("monthlySales").getContext("2d");
-
-new Chart(ctx1,{
-    type:'bar',
-    data:data,
-    options:{
-        scales:{
-            yAxes:[{
-                ticks:{
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-
-
-var data2 = {
-    labels: {!! json_encode($daily_labels) !!},
-    datasets:[
-        {
-            label:"Daily Sales",
-            fill:false,
-            borderColor:"#17a2b8",
-            borderWidth:2,
-            data:{!! json_encode($daily_booking_amount_data) !!},
-            tension:0.5
+$(document).ready(function() {
+    var chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            display: true,
+            position: 'top',
+            labels: {
+                fontColor: '#475569',
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontSize: 12,
+                boxWidth: 10,
+                padding: 15
+            }
         },
-        {
-            label:"Daily Expense",
-            fill:false,
-            borderColor:"#dc3545",
-            borderWidth:2,
-            data:{!! json_encode(array_fill(0,count($daily_labels),75000)) !!},
-            tension:1
-        }
-    ]
-};
-
-var ctx2 = document.getElementById("dailySales").getContext("2d");
-
-new Chart(ctx2,{
-    type:'line',
-    data:data2,
-    options:{
-        scales:{
-            yAxes:[{
-                ticks:{
-                    beginAtZero:true
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    display: false,
+                    drawBorder: false
+                },
+                ticks: {
+                    fontColor: '#94a3b8',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontSize: 10,
+                    padding: 8
+                }
+            }],
+            yAxes: [{
+                gridLines: {
+                    color: '#f1f5f9',
+                    zeroLineColor: '#f1f5f9',
+                    drawBorder: false
+                },
+                ticks: {
+                    beginAtZero: true,
+                    fontColor: '#94a3b8',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontSize: 10,
+                    padding: 8
                 }
             }]
+        },
+        tooltips: {
+            backgroundColor: '#0f172a',
+            titleFontFamily: "'Plus Jakarta Sans', sans-serif",
+            titleFontSize: 12,
+            titleFontColor: '#ffffff',
+            bodyFontFamily: "'Plus Jakarta Sans', sans-serif",
+            bodyFontSize: 12,
+            bodyFontColor: '#cbd5e1',
+            xPadding: 12,
+            yPadding: 12,
+            cornerRadius: 8,
+            displayColors: false
         }
-    }
-});
+    };
 
-</script>
+    // Chart 1: Bar chart with smooth gradient
+    var ctx1 = document.getElementById("monthlySales").getContext("2d");
+    var gradient1 = ctx1.createLinearGradient(0, 0, 0, 300);
+    gradient1.addColorStop(0, 'rgba(37, 99, 235, 0.85)');
+    gradient1.addColorStop(1, 'rgba(37, 99, 235, 0.15)');
+
+    var data1 = {
+        labels: {!! json_encode($labels) !!},
+        datasets: [{
+            label: "Daily Viewers Count",
+            data: {!! json_encode($booking_count_data) !!},
+            backgroundColor: gradient1,
+            borderColor: "#2563eb",
+            borderWidth: 1.5,
+            hoverBackgroundColor: "rgba(37, 99, 235, 0.95)"
+        }]
+    };
+
+    new Chart(ctx1, {
+        type: 'bar',
+        data: data1,
+        options: chartOptions
+    });
+
+    // Chart 2: Line & Dashed Threshold line
+    var ctx2 = document.getElementById("dailySales").getContext("2d");
+    var gradient2 = ctx2.createLinearGradient(0, 0, 0, 300);
+    gradient2.addColorStop(0, 'rgba(37, 99, 235, 0.25)');
+    gradient2.addColorStop(1, 'rgba(37, 99, 235, 0.02)');
+
+    var data2 = {
+        labels: {!! json_encode($daily_labels) !!},
+        datasets: [
+            {
+                label: "Daily Sales",
+                fill: true,
+                backgroundColor: gradient2,
+                borderColor: "#2563eb",
+                borderWidth: 2.5,
+                pointBackgroundColor: "#ffffff",
+                pointBorderColor: "#2563eb",
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                pointHoverBackgroundColor: "#2563eb",
+                pointHoverBorderColor: "#ffffff",
+                data: {!! json_encode($daily_booking_amount_data) !!},
+                tension: 0.35
+            },
+            {
+                label: "Daily Expense",
+                fill: false, // No fill under expense threshold line!
+                borderColor: "#f43f5e",
+                borderWidth: 2,
+                borderDash: [6, 6], // Elegant dashed threshold!
+                pointRadius: 0, // No points on threshold line!
+                pointHoverRadius: 0,
+                data: {!! json_encode(array_fill(0, count($daily_labels), 75000)) !!}
+            }
+        ]
+    };
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: data2,
+        options: chartOptions
+    });
+});</script>
 
 @endsection

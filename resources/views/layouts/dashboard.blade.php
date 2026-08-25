@@ -14,7 +14,7 @@
 
     <!-- Custom Theme CSS -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom-dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom-dashboard.css') }}?v={{ time() }}" rel="stylesheet">
     
     <!-- Fonts (Optimized Plus Jakarta Sans Font Stack) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
