@@ -168,7 +168,7 @@ $current_uri2 = request()->segment(2); ?>
 
            @if (in_array('booking_create', Session::get('permissions')->toArray()) ||
             in_array('sale_status', Session::get('permissions')->toArray()))
-            <li class="treeview {{ request()->is('sale_status*') || request()->is('booking*') ? 'is-expanded' : '' }}">
+            <li class="treeview {{ request()->is('photo_gallery*') || request()->is('photo_content*') || request()->is('video_gallery*') ? 'is-expanded' : '' }}">
                 <a class="app-menu__item" href="javascript:void(0)" data-toggle="treeview">
                     <i class="app-menu__icon fa fa-star-o"></i>
                     <span class="app-menu__label">Manage Gallery</span>
@@ -228,7 +228,7 @@ $current_uri2 = request()->segment(2); ?>
             in_array('gst_report_r1_index', Session::get('permissions')->toArray()) ||
             in_array('sale_summary_index', Session::get('permissions')->toArray()))
             <li
-                class="treeview {{ request()->is('payment_mode*') || request()->is('ticket_sale*') || request()->is('booking_type*') || request()->is('cashier_shift_summary_show_wise*') || request()->is('cashier_shift_summary*') || request()->is('sale_summary*') ? 'is-expanded' : '' }}">
+                class="treeview {{ request()->is('reports*') || request()->is('payment_mode*') || request()->is('ticket_sale*') || request()->is('booking_type*') || request()->is('cashier_shift_summary_show_wise*') || request()->is('cashier_shift_summary*') || request()->is('sale_summary*') ? 'is-expanded' : '' }}">
                 <a class="app-menu__item" href="javascript:void(0)" data-toggle="treeview"><i
                         class="app-menu__icon fa fa-star-o"></i><span class="app-menu__label">Reports</span><i
                         class="treeview-indicator fa fa-angle-right"></i></a>

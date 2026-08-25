@@ -20,37 +20,79 @@
             @include('../../partials/message')
             <!-- include message -->
             <div id="msg"></div>
-            <div class="tile" style="text-align: center">
-                <div class="tile-body">
-                    <div id="reader" width="600px"></div>
-                    <button id="restartButton" class="btn btn-success btn-lg mt-2" style="width:100%; font-size:32px">Scan New Ticket</button>
+
+            <!-- KPI Metric Widget Cards -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="widget-small primary coloured-icon" style="height: 80px; margin-bottom: 15px;">
+                        <i class="icon fa-solid fa-camera-retro"></i>
+                        <div class="info">
+                            <h4 style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 600; margin-bottom: 2px;">Today Scans</h4>
+                            <p style="font-size: 22px; font-weight: 700; color: #0f172a; margin: 0;">{{ $todayScans }}</p>
+                        </div>
+                    </div>
                 </div>
-                <bR><bR><h4>OR</h4><bR><bR>
-                <div class="tile-body">
-                    <input type="text" class="form-control" name="booking_reference" maxlength="8"  id="booking_reference" placeholder="Enter Booking Reference No."><Br>
-                    <button id="searchButton"  onclick="searchbyref()" class="btn btn-warning btn-lg mt-2" style="width:70%; font-size:32px">Search</button>
+                <div class="col-md-6">
+                    <div class="widget-small info coloured-icon" style="height: 80px; margin-bottom: 15px;">
+                        <i class="icon fa-solid fa-qrcode"></i>
+                        <div class="info">
+                            <h4 style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 600; margin-bottom: 2px;">Total Scans</h4>
+                            <p style="font-size: 22px; font-weight: 700; color: #0f172a; margin: 0;">{{ $totalScans }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Scanner Control Panel Card -->
+            <div class="tile">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6" style="padding: 10px 15px;">
+                        <!-- Scan Button Section -->
+                        <div class="scan-action-section text-center mb-4">
+                            <div id="reader" style="width: 100%; border-radius: 12px; overflow: hidden; border: 1px dashed #cbd5e1; background: #f8fafc; margin-bottom: 15px;"></div>
+                            <button id="restartButton" class="btn btn-primary btn-lg btn-block" style="padding: 12px 24px; font-size: 18px; font-weight: 600; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.15); display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                                <i class="fa-solid fa-qrcode"></i> Scan New Ticket
+                            </button>
+                        </div>
+
+                        <!-- Elegant Divider -->
+                        <div class="divider-container d-flex align-items-center justify-content-center my-4">
+                            <div style="flex-grow: 1; height: 1px; background-color: #e2e8f0;"></div>
+                            <span class="mx-3" style="font-weight: 700; font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px;">OR</span>
+                            <div style="flex-grow: 1; height: 1px; background-color: #e2e8f0;"></div>
+                        </div>
+
+                        <!-- Manual Reference Search Section -->
+                        <div class="manual-search-section mb-3">
+                            <div class="form-group position-relative mb-3">
+                                <label for="booking_reference" style="font-weight: 600; color: #475569; font-size: 13px;">Booking Reference</label>
+                                <input type="text" class="form-control" name="booking_reference" maxlength="8" id="booking_reference" placeholder="Enter Booking Reference No." style="height: 48px; border-radius: 8px; font-size: 15px; padding: 10px 16px; border: 1px solid #cbd5e1;">
+                            </div>
+                            <button id="searchButton" onclick="searchbyref()" class="btn btn-warning btn-lg btn-block" style="padding: 12px 24px; font-size: 16px; font-weight: 600; border-radius: 8px; width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #f59e0b; border-color: #f59e0b; color: #ffffff;">
+                                <i class="fa-solid fa-magnifying-glass"></i> Search Reference
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="tile-body">
-                    <bR><bR>
-                    <hr>
-                    <bR><bR>
-                    <h3>Today Scans : <?php echo $todayScans;?></h3><bR>
-                    <h3>Total Scans :  <?php echo $totalScans;?></h3>
+                <hr style="border-top: 1px solid #e2e8f0; margin: 30px 0;">
+
+                <!-- Scan History Table Section -->
+                <div class="tile-title-w-btn" style="margin-bottom: 20px;">
+                    <h3 class="title" style="font-size: 16px; font-weight: 700; color: #1e3a8a; margin: 0;"><i class="fa-solid fa-clock-rotate-left mr-2"></i> Today's Scanned History</h3>
                 </div>
 
-                <div class="tile-body" style="width: 100%">
-                    <bR><bR>
-                    <table class="table table-responsive align-center" >
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered" style="margin-bottom: 0;">
                         <thead>
                             <tr>
-                                <th>SN.</th>
+                                <th class="text-center">SN.</th>
                                 <th>Booking ID</th>
                                 <th>Booking Reference</th>
                                 <th>Seat No</th>
-                                <th>Total Seats</th>
-                                <th>Scanned Seats</th>
-                                <th>Remaining Seats</th>
+                                <th class="text-center">Total Seats</th>
+                                <th class="text-center">Scanned Seats</th>
+                                <th class="text-center">Remaining Seats</th>
                                 <th>Scanning Time</th>
                             </tr>
                         </thead>
@@ -58,13 +100,15 @@
                         <?php $i=1;?>
                         @foreach ($today_data as $single)
                             <tr>
-                                <td>{{$i++}}</td>
+                                <td class="text-center" style="font-weight: 600;">{{$i++}}</td>
                                 <td>{{$single->booking_id}}</td>
-                                <td>{{$single->booking_id_str}}</td>
+                                <td style="font-family: monospace; font-weight: 600; color: #475569;">{{$single->booking_id_str}}</td>
                                 <td>{{$single->label}}{{$single->name}}</td>
-                                <td>{{$single->total_seat_count}}</td>
-                                <td>{{$single->total_seat_count-$single->remaining_seat_count}}</td>
-                                <td class="label label-success">{{$single->remaining_seat_count}}</td>
+                                <td class="text-center">{{$single->total_seat_count}}</td>
+                                <td class="text-center" style="color: #10b981; font-weight: 600;">{{$single->total_seat_count-$single->remaining_seat_count}}</td>
+                                <td class="text-center">
+                                    <span class="badge badge-success" style="padding: 6px 12px; font-size: 12px; border-radius: 99px;">{{$single->remaining_seat_count}}</span>
+                                </td>
                                 <td>{{date('d-M-Y h:i:s A', strtotime($single->last_scan_time))}}</td>
                             </tr>
                         @endforeach
@@ -402,7 +446,7 @@ border: 1px solid #b1acac;
             <div id="ticket_booking_detail" style="text-align: center"> </div><br>
             <hr>
            <div style="width: 100%;margin: 0 auto;text-align: center;">
-            <button type="button" onclick="scanTickets()" id="submit_button" class="btn btn-primary btn-lg" style="width:100%; font-size:32px">Submit</button>
+            <button type="button" onclick="scanTickets()" id="submit_button" class="btn btn-primary btn-lg btn-block" style="padding: 12px 24px; font-size: 18px; font-weight: 600; border-radius: 8px;">Submit</button>
            </div>
         </div>
         <div class="modal-footer">
