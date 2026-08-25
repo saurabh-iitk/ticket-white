@@ -570,25 +570,82 @@ textarea.form-control {
 
 /* DataTables Styling Overrides */
 .dataTables_wrapper .dataTables_length select {
-    padding: 5px 10px !important;
+    padding: 6px 30px 6px 12px !important;
     border-radius: 6px !important;
-    border: 1px solid #cbd5e1 !important;
+    border: 1px solid #dbeafe !important;
     outline: none !important;
     background-color: #ffffff !important;
+    color: #1e3a8a !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a8a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    background-size: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+.dataTables_wrapper .dataTables_length select:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
 }
 
 .dataTables_wrapper .dataTables_filter input {
     padding: 6px 12px !important;
     border-radius: 6px !important;
-    border: 1px solid #cbd5e1 !important;
+    border: 1px solid #dbeafe !important;
     outline: none !important;
     margin-left: 6px !important;
+    color: #334155 !important;
+    font-size: 13px !important;
+    background-color: #ffffff !important;
     transition: all 0.2s ease !important;
 }
 
 .dataTables_wrapper .dataTables_filter input:focus {
-    border-color: #3b82f6 !important;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+}
+
+/* DataTables Export Buttons Wrapper & Buttons Styling */
+.dt-buttons, .dt-buttons.btn-group {
+    margin-bottom: 15px !important;
+    display: inline-flex !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+}
+
+.dt-button, .buttons-html5, .buttons-csv, .buttons-excel, .buttons-pdf, .buttons-print, .buttons-copy {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px 16px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    color: #1e3a8a !important;
+    background-color: #f0f7ff !important;
+    border: 1px solid #dbeafe !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+    margin: 0 !important;
+}
+
+.dt-button:hover, .buttons-html5:hover, .buttons-csv:hover, .buttons-excel:hover, .buttons-pdf:hover, .buttons-print:hover, .buttons-copy:hover {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.12), 0 2px 4px -1px rgba(37, 99, 235, 0.08) !important;
+    text-decoration: none !important;
+}
+
+.dt-button:active, .buttons-html5:active, .buttons-csv:active, .buttons-excel:active, .buttons-pdf:active, .buttons-print:active, .buttons-copy:active {
+    transform: translateY(0) !important;
 }
 
 .dataTables_wrapper .dataTables_info {
