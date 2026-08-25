@@ -239,10 +239,26 @@
         convertSidebarIcons();
         highlightActiveSidebar();
 
-        // Run conversion whenever DataTables draws/redraws the table rows
-        $(document).on('draw.dt', function() {
-            convertButtonsToIcons();
+        // Use a MutationObserver to ensure buttons are converted to icons dynamically
+        // whenever the table rows change (e.g. pagination, sorting, search filters)
+        var observerTimeout;
+        var tableObserver = new MutationObserver(function() {
+            clearTimeout(observerTimeout);
+            observerTimeout = setTimeout(function() {
+                tableObserver.disconnect();
+                convertButtonsToIcons();
+                
+                var target = document.querySelector('body');
+                if (target) {
+                    tableObserver.observe(target, { childList: true, subtree: true });
+                }
+            }, 30);
         });
+        
+        var targetNode = document.querySelector('body');
+        if (targetNode) {
+            tableObserver.observe(targetNode, { childList: true, subtree: true });
+        }
 
         // Smooth fade out of page loader overlay once window is fully loaded
         $(window).on('load', function() {
