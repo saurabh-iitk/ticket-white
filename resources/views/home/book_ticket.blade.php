@@ -87,7 +87,6 @@
 
             .progress-bar .step {
                 position: relative;
-                z-index: 3;
                 width: 100%;
                 max-width: 120px;
                 display: flex;
@@ -113,6 +112,7 @@
                 margin-bottom: 0;
                 position: relative;
                 line-height: 10px;
+                z-index: 2;
             }
 
             .progress-bar .step .circle span {
@@ -705,7 +705,7 @@
         <div class="progress-bar">
            
             <div class="step completed">
-                <div class="circle"><span><i class="bi bi-check-lg"></i></span></div>
+                <div class="circle"><span><i class="fa-solid fa-check"></i></span></div>
                 <div class="label">Venue</div>
             </div>
             <div class="step active">

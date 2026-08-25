@@ -43,7 +43,6 @@
 
             .progress-bar .step {
                 position: relative;
-                z-index: 3;
                 width: 100%;
                 max-width: 120px;
                 display: flex;
@@ -69,7 +68,7 @@
                 margin-bottom: 0;
                 position: relative;
                 line-height: 10px;
-
+                z-index: 2;
             }
 
             .progress-bar .step.completed .circle {
