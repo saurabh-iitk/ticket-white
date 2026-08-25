@@ -42,6 +42,7 @@
         }
     </script>
 
+@if (!request()->is('reports/print_ticket*'))
     <!-- Page Loader Overlay -->
     <div id="pageLoaderOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
@@ -55,6 +56,7 @@
         to { transform: rotate(360deg); }
     }
     </style>
+@endif
 
     <div id="app">
         @include('../partials/navbar')
@@ -282,17 +284,21 @@
             tableObserver.observe(targetNode, { childList: true, subtree: true });
         }
 
-        // Smooth fade out of page loader overlay once window is fully loaded
-        $(window).on('load', function() {
+        // Smooth fade out of page loader overlay
+        function dismissLoader() {
             var $loader = $('#pageLoaderOverlay');
-            $loader.css({
-                'opacity': 0,
-                'visibility': 'hidden'
-            });
-            setTimeout(function() {
-                $loader.remove();
-            }, 400);
-        });
+            if ($loader.length && $loader.is(':visible')) {
+                $loader.css({
+                    'opacity': 0,
+                    'visibility': 'hidden'
+                });
+                setTimeout(function() {
+                    $loader.remove();
+                }, 400);
+            }
+        }
+        // Dismiss after a short paint delay (DOM + CSS are already loaded in $(document).ready)
+        setTimeout(dismissLoader, 500);
 
         // Listen to sidebar toggle button click to save minimized preference
         $('.app-sidebar__toggle').on('click', function() {

@@ -488,11 +488,10 @@
                                                     href="{{ route('reports.print_ticket', $booking->id) }}"><i
                                                         class="fa fa-print"></i> </a>
                                                 <a class="btn btn-info btn-sm" target="_blank"
-                                                    href="{{ route('reports.booking_detail', $booking->id) }}"
-                                                    style="float:left"><i class="fa fa-eye"></i></a>
+                                                    href="{{ route('reports.booking_detail', $booking->id) }}" ><i class="fa fa-eye"></i></a>
                                                 @if ($payment_method_id == 7 || $payment_method_id == 9)
                                                     <a class="btn btn-warning btn-sm"
-                                                        style="float:left;color:white;margin: 5px 1px;"
+                                                        style="color:white;margin: 5px 1px;"
                                                         onclick="edit_booking({{ $booking->id }}, '{{ $bms_id }}', '{{ $payment_method_name }}') ">
                                                         <i class="fa fa-edit"></i></a>
                                                 @endif

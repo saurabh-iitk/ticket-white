@@ -96,6 +96,26 @@
                 display: flex;
             }
 
+            body.app {
+                background-color: #fff !important;
+            }
+
+            .app-content {
+                margin: 0 !important;
+                padding: 0 !important;
+                min-height: auto !important;
+                background-color: #fff !important;
+            }
+
+            
+            .tile {
+                position: relative !important;
+                background: #ffffff !important;
+                border-radius: 3px !important;
+                padding: 20px !important;
+                margin-bottom: 30px!important;
+            }
+
             /*@page { margin: 0; }*/
             .no-print {
                 display: none;
@@ -344,7 +364,7 @@
                                                     
                                                     <div class="card shadow-sm border-0 mb-4" style="max-width: 500px;">
                                                       <div class="card-body">
-                                                        <h5 class="card-title mb-3">Summary</h5>
+                                                        <h5 class="card-title mb-2">Summary</h5>
                                                         
                                                         <ul class="list-group list-group-flush">
                                                           <li class="list-group-item d-flex justify-content-between">
@@ -400,7 +420,7 @@
                                             </tr>
                                             
                                              <tr>
-                                                <td style="font-family: sans-serif;    font-size: 18px;   font-weight:600; padding-top: 17px; padding-bottom: 30px;"> 
+                                                <td style="font-family: sans-serif;    font-size: 18px;   font-weight:600; padding-top: 10px; padding-bottom: 10px;"> 
                                                     Ticketing Software : <br> BillionByte IT Solutions, Kanpur
                                                 </td>
                                             </tr>
@@ -408,9 +428,8 @@
                                              
                                         </tbody>
                                     </table>
-                                    <Br>
                                     <hr style="border-top:1px dashed;"/>
-                                    <table class="rotate_layout"  style="text-align:center;margin:0 auto; padding-top:60px">
+                                    <table class="rotate_layout"  style="text-align:center;margin:0 auto; padding-top:20px">
                                         <tbody>
                                           
                                             <tr>    <Br>  <Br>
