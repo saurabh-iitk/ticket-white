@@ -889,6 +889,9 @@ textarea.form-control {
         padding: 10px 0 !important;
         justify-content: center !important;
         display: flex !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        position: relative !important;
     }
 
     .sidebar-mini.sidenav-toggled .app-menu__icon {
@@ -906,22 +909,68 @@ textarea.form-control {
         color: #0f172a !important;
         border: 1px solid #cbd5e1 !important;
         border-left: none !important;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05) !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.05) !important;
         border-top-right-radius: 8px !important;
-        border-bottom-right-radius: 8px !important;
+        border-bottom-right-radius: 0 !important;
         opacity: 1 !important;
+        font-weight: 600 !important;
+        font-size: 13px !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        padding: 0 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        min-width: 200px !important;
+        z-index: 11 !important;
     }
 
-    /* Submenus container styling on hover */
+    /* For non-treeview items (single links like Dashboard, Roles), keep full rounded corners */
+    .sidebar-mini.sidenav-toggled .app-menu>li:not(.treeview)>.app-menu__item:hover .app-menu__label {
+        border-bottom: 1px solid #cbd5e1 !important;
+        border-top-right-radius: 8px !important;
+        border-bottom-right-radius: 8px !important;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* Submenus container styling on hover - attached to label */
     .sidebar-mini.sidenav-toggled .treeview-menu {
         background-color: #ffffff !important;
         border: 1px solid #cbd5e1 !important;
         border-left: none !important;
+        border-top: none !important;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05) !important;
-        border-top-right-radius: 8px !important;
+        border-top-right-radius: 0 !important;
         border-bottom-right-radius: 8px !important;
         margin-left: 0 !important;
-        padding-left: 0 !important;
+        margin-top: -1px !important;
+        padding: 4px 0 8px 0 !important;
+        min-width: 200px !important;
+    }
+
+    /* Ensure treeview-menu items are styled cleanly in popout */
+    .sidebar-mini.sidenav-toggled .treeview-menu .treeview-item {
+        color: #475569 !important;
+        padding: 8px 16px !important;
+        font-size: 12.5px !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+        display: block !important;
+        background: transparent !important;
+    }
+
+    .sidebar-mini.sidenav-toggled .treeview-menu .treeview-item:last-child {
+        border-bottom: none !important;
+    }
+
+    .sidebar-mini.sidenav-toggled .treeview-menu .treeview-item:hover {
+        background-color: #f0f7ff !important;
+        color: #1e3a8a !important;
+    }
+
+    .sidebar-mini.sidenav-toggled .treeview-menu .treeview-item.active {
+        background-color: #eff6ff !important;
+        color: #2563eb !important;
+        font-weight: 600 !important;
     }
 }
 

@@ -239,6 +239,28 @@
         convertSidebarIcons();
         highlightActiveSidebar();
 
+        // Sync collapsed sidebar label width with submenu width on hover
+        $('.app-sidebar .treeview').on('mouseenter', function() {
+            if ($('body').hasClass('sidenav-toggled')) {
+                var $label = $(this).find('.app-menu__label');
+                var $submenu = $(this).find('.treeview-menu');
+                if ($label.length && $submenu.length) {
+                    // Wait a tick for both to render
+                    setTimeout(function() {
+                        var labelW = $label.outerWidth();
+                        var submenuW = $submenu.outerWidth();
+                        var maxW = Math.max(labelW, submenuW);
+                        $label.css('min-width', maxW + 'px');
+                        $submenu.css('min-width', maxW + 'px');
+                    }, 10);
+                }
+            }
+        }).on('mouseleave', function() {
+            // Reset to CSS defaults
+            $(this).find('.app-menu__label').css('min-width', '');
+            $(this).find('.treeview-menu').css('min-width', '');
+        });
+
         // Use a MutationObserver to ensure buttons are converted to icons dynamically
         // whenever the table rows change (e.g. pagination, sorting, search filters)
         var observerTimeout;
