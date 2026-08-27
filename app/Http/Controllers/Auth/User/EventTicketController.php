@@ -505,6 +505,119 @@ class EventTicketController extends Controller
         }
     }
 
+    public function layout_mapping_canvas(Request $request, $id)
+    {
+        $event_ticket = EventTicket::where('id', $id)->first();
+        $layout_id = $event_ticket->layout_id;
+
+        $layout = Layout::where('status', 'ACTIVE')
+            ->where('id', $layout_id)
+            ->get();
+        
+        $layout_objects = config('layout_objects.objects', []);
+
+        if ($request->get('esd_id') !== null && $request->get('est_id') !== null) {
+            $es_id = $request->get('es_id');
+            $esd_id = $request->get('esd_id');
+            $est_id = $request->get('est_id');
+            $event_ticket_lists = EventTicketList::where(['event_ticket_id' => $event_ticket->id, 'event_schedule_list_id' => $esd_id, 'event_show_time_id' => $est_id])->get();
+            return view('auth.user.event_ticket.show_layout_mapping_canvas', compact('event_ticket', 'es_id', 'esd_id', 'est_id', 'event_ticket_lists', 'layout', 'layout_objects'));
+        } else {
+            return view('auth.user.event_ticket.search_layout_mapping_canvas', compact('event_ticket', 'layout'));
+        }
+    }
+
+    public function save_layout_designer(Request $request)
+    {
+        $layout_id = $request->input('layout_id');
+        $markers = $request->input('markers');
+        $seat_updates = $request->input('seat_updates');
+
+        // 1. Save Markers
+        $layout = Layout::where('id', $layout_id)->first();
+        if ($layout) {
+            $layout->markers = is_array($markers) ? json_encode($markers) : $markers;
+            $layout->save();
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Layout not found.'], 404);
+        }
+
+        // 2. Batch Update Seats
+        if (is_array($seat_updates) && count($seat_updates) > 0) {
+            $event_ticket_id = $request->input('event_ticket_id');
+            $esd_id = $request->input('event_schedule_list_id');
+            $est_id = $request->input('event_show_time_id');
+
+            // Pre-load ticket lists
+            $ticket_lists = EventTicketList::where([
+                'event_ticket_id' => $event_ticket_id,
+                'event_schedule_list_id' => $esd_id,
+                'event_show_time_id' => $est_id
+            ])->get()->keyBy('ticket_type_id');
+
+            foreach ($seat_updates as $update) {
+                $seat_id = $update['id'];
+                $update_type = $update['type']; // 'status' or 'class'
+                $value = $update['value'];
+
+                $seat = EventSeat::where('id', $seat_id)->first();
+                if ($seat) {
+                    if ($update_type === 'clear_status') {
+                        $seat->is_visible = 'YES';
+                        $seat->is_damaged = 'NO';
+                        $seat->is_reserved = 'NO';
+                        $seat->event_ticket_type_id = null;
+                        $seat->total_ticket = 0;
+                        $seat->base_price = 0;
+                        $seat->total_discount = 0;
+                        $seat->save();
+                    } elseif ($update_type === 'status') {
+                        if ($value === 'show') {
+                            $seat->is_visible = 'YES';
+                        } elseif ($value === 'hide') {
+                            $seat->is_visible = 'NO';
+                        } elseif ($value === 'damaged') {
+                            $seat->is_damaged = 'YES';
+                        } elseif ($value === 'undamaged') {
+                            $seat->is_damaged = 'NO';
+                        } elseif ($value === 'reserve') {
+                            $seat->is_reserved = 'YES';
+                        } elseif ($value === 'unreserve') {
+                            $seat->is_reserved = 'NO';
+                        }
+                        $seat->save();
+                    } elseif ($update_type === 'class') {
+                        $ticket_type_id = intval($value);
+                        
+                        if ($ticket_type_id > 0) {
+                            $ticket_list = $ticket_lists->get($ticket_type_id);
+                            if ($ticket_list) {
+                                $seat->event_ticket_type_id = $ticket_type_id;
+                                $seat->total_ticket = $ticket_list->total_ticket;
+                                $seat->base_price = $ticket_list->base_price;
+                                $seat->total_discount = $ticket_list->total_discount;
+                            } else {
+                                $seat->event_ticket_type_id = $ticket_type_id;
+                                $seat->total_ticket = 0;
+                                $seat->base_price = 0;
+                                $seat->total_discount = 0;
+                            }
+                        } else {
+                            // Reset ticket type (Available Seat)
+                            $seat->event_ticket_type_id = null;
+                            $seat->total_ticket = 0;
+                            $seat->base_price = 0;
+                            $seat->total_discount = 0;
+                        }
+                        $seat->save();
+                    }
+                }
+            }
+        }
+
+        return response()->json(['status' => 'success', 'message' => 'Layout and seating updates saved successfully.']);
+    }
+
     public function update_event_seat(Request $request)
     {
         if (isset($request->action) && $request->action == 'hide') {

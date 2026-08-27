@@ -41,4 +41,9 @@ class Layout extends Model
      * @var array
      */
     protected $casts = [ ];
+
+    public function sections()
+    {
+        return $this->hasMany(Section::class, 'layout_id');
+    }
 }

@@ -6,6 +6,8 @@ use App\Models\Layout;
 use App\Models\LayoutDetail;
 use App\Models\Event;
 use App\Models\Venue;
+use App\Models\Section;
+use App\Models\PricingCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
@@ -370,5 +372,135 @@ class LayoutController extends Controller
       $skip_label = $request->layout_skip_label;
       Layout::where('id',$id)->update(['layout_row_label' => $row_label, 'layout_skip_label' => $skip_label]);  
       return redirect()->back()->with('success', 'Row Label Name Updated!!');
+    }
+
+    // -------------------------------------------------------------
+    // VENUE LAYOUT DESIGNER CONTROLLER METHODS
+    // -------------------------------------------------------------
+    public function designer($id)
+    {
+        $layout = Layout::findOrFail($id);
+        $venue = Venue::findOrFail($layout->venue_id);
+        return view('auth.user.seat_layouts.designer', compact('layout', 'venue'));
+    }
+
+    public function load_designer_data($id)
+    {
+        $layout = Layout::findOrFail($id);
+        $sections = Section::where('layout_id', $id)->get();
+        $seats = LayoutDetail::where('layout_id', $id)->get();
+
+        return response()->json([
+            'layout' => $layout,
+            'sections' => $sections,
+            'seats' => $seats
+        ]);
+    }
+
+    public function save_designer_data(Request $request, $id)
+    {
+        $layout = Layout::findOrFail($id);
+        $layout->layout_name = $request->input('layout_name');
+        
+        $markers = $request->input('markers');
+        $layout->markers = is_array($markers) ? json_encode($markers) : $markers;
+        $layout->save();
+
+        // 1. Sync Sections
+        $section_id_map = [];
+        $section_ids = [];
+        foreach ($request->input('sections', []) as $sec) {
+            $section = Section::updateOrCreate(
+                ['id' => is_numeric($sec['id'] ?? null) ? $sec['id'] : null, 'layout_id' => $id],
+                [
+                    'name' => $sec['name'],
+                    'code' => $sec['code'],
+                    'capacity' => $sec['capacity'] ?? 0,
+                    'pricing_category_id' => $sec['pricing_category_id'] ?? null,
+                    'color' => $sec['color'] ?? '#3b82f6',
+                    'x' => $sec['x'] ?? 0,
+                    'y' => $sec['y'] ?? 0,
+                    'w' => $sec['w'] ?? 100,
+                    'h' => $sec['h'] ?? 100,
+                    'rotation' => $sec['rotation'] ?? 0
+                ]
+            );
+            $section_ids[] = $section->id;
+            if (isset($sec['client_id'])) {
+                $section_id_map[$sec['client_id']] = $section->id;
+            }
+            if (isset($sec['id'])) {
+                $section_id_map[$sec['id']] = $section->id;
+            }
+        }
+        Section::where('layout_id', $id)->whereNotIn('id', $section_ids)->delete();
+
+        // 2. Sync Seats (Layout Details)
+        $seat_ids = [];
+        foreach ($request->input('seats', []) as $seat_data) {
+            $client_section_id = $seat_data['section_id'] ?? null;
+            $db_section_id = null;
+            if ($client_section_id) {
+                $db_section_id = $section_id_map[$client_section_id] ?? $client_section_id;
+            }
+
+            $seat = LayoutDetail::updateOrCreate(
+                ['id' => is_numeric($seat_data['id'] ?? null) ? $seat_data['id'] : null, 'layout_id' => $id],
+                [
+                    'row_no' => is_numeric($seat_data['row_no'] ?? null) ? (int)$seat_data['row_no'] : null,
+                    'col_no' => is_numeric($seat_data['col_no'] ?? null) ? (int)$seat_data['col_no'] : null,
+                    'name' => $seat_data['name'] ?? null,
+                    'label' => $seat_data['label'] ?? null,
+                    'seatno' => $seat_data['seatno'] ?? null,
+                    'section_id' => $db_section_id,
+                    'seat_type' => $seat_data['seat_type'] ?? 'REGULAR',
+                    'x' => $seat_data['x'] ?? 0,
+                    'y' => $seat_data['y'] ?? 0,
+                    'w' => $seat_data['w'] ?? 32,
+                    'h' => $seat_data['h'] ?? 32,
+                    'rotation' => $seat_data['rotation'] ?? 0,
+                    'is_visible' => ($seat_data['is_visible'] ?? true) ? 'YES' : 'NO',
+                    'is_removed' => ($seat_data['is_removed'] ?? false) ? 'YES' : 'NO',
+                    'is_damaged' => ($seat_data['is_damaged'] ?? false) ? 'YES' : 'NO',
+                    'is_reserved' => ($seat_data['is_reserved'] ?? false) ? 'YES' : 'NO'
+                ]
+            );
+            $seat_ids[] = $seat->id;
+        }
+        LayoutDetail::where('layout_id', $id)->whereNotIn('id', $seat_ids)->delete();
+
+        return response()->json(['status' => 'success', 'message' => 'Venue layout designer data saved successfully.']);
+    }
+
+    public function list_pricing_categories()
+    {
+        return response()->json(PricingCategory::all());
+    }
+
+    public function store_pricing_category(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'color' => 'required'
+        ]);
+
+        $category = PricingCategory::updateOrCreate(
+            ['id' => $request->input('id')],
+            [
+                'name' => $request->input('name'),
+                'price' => $request->input('price'),
+                'currency' => $request->input('currency', 'INR'),
+                'color' => $request->input('color')
+            ]
+        );
+
+        return response()->json($category);
+    }
+
+    public function delete_pricing_category($id)
+    {
+        PricingCategory::where('id', $id)->delete();
+        return response()->json(['status' => 'success']);
     }
 }

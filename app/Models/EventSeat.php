@@ -41,5 +41,14 @@ class EventSeat extends Model
      * @var array
      */
     protected $casts = [ ];
-    
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
+    }
+
+    public function pricingCategory()
+    {
+        return $this->belongsTo(PricingCategory::class, 'pricing_category_id');
+    }
 }

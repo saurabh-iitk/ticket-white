@@ -41,4 +41,9 @@ class LayoutDetail extends Model
      * @var array
      */
     protected $casts = [ ];
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
+    }
 }

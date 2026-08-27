@@ -907,7 +907,14 @@ if($res_unres_dmg_hide=='ALLOWED' || $reserve_unreserve =='ALLOWED'){
                     <div id="venue">
                         <?php 
                     $layout_data=getLayout($layout->id);
-                    
+                    ?>
+                    <script>
+                        if (typeof window.allLayoutMarkers === 'undefined') {
+                            window.allLayoutMarkers = {};
+                        }
+                        window.allLayoutMarkers['{{ $layout->id }}'] = {!! $layout_data && $layout_data->markers ? $layout_data->markers : '{"gates":[], "seat_coords":{}}' !!};
+                    </script>
+                    <?php
                     if($layout_data->stage_direction=='UP'){?>
                     <table>
                         <tr>
@@ -2331,6 +2338,104 @@ function save_action()
 
     // $( ".grabbable td" ).draggable();
 
+    // Render absolute seats and canvas gates from markers JSON
+    $(document).ready(function() {
+        var activeLayoutId = '{{ $layout->id }}';
+        var layoutMarkers = window.allLayoutMarkers && window.allLayoutMarkers[activeLayoutId] ? window.allLayoutMarkers[activeLayoutId] : {"gates":[], "seat_coords":{}};
+        
+        // Normalize format
+        if (Array.isArray(layoutMarkers)) {
+            layoutMarkers = { gates: layoutMarkers, seat_coords: {} };
+        } else if (layoutMarkers.seat_shapes && !layoutMarkers.seat_coords) {
+            layoutMarkers.seat_coords = {};
+            Object.keys(layoutMarkers.seat_shapes).forEach(function(sid) {
+                layoutMarkers.seat_coords[sid] = { shape: layoutMarkers.seat_shapes[sid] };
+            });
+        }
+
+        var seatCoords = layoutMarkers.seat_coords || {};
+        var gates = layoutMarkers.gates || [];
+
+        var venueDiv = $('#venue');
+        venueDiv.css({
+            'position': 'relative',
+            'width': '100%',
+            'min-height': '550px',
+            'display': 'block'
+        });
+
+        var seatRowDiv = $('.seat_row');
+        seatRowDiv.css({
+            'position': 'relative',
+            'width': '100%',
+            'height': '100%',
+            'min-height': '550px'
+        });
+
+        var seatTable = seatRowDiv.find('table');
+        seatTable.css({
+            'position': 'relative',
+            'width': '100%',
+            'height': '100%',
+            'border-collapse': 'collapse'
+        });
+
+        // Position each seat td absolute
+        seatTable.find('td[title]').each(function() {
+            var seatCell = $(this);
+            var seatId = seatCell.attr('title').trim();
+            
+            if (seatId && seatCoords[seatId]) {
+                var coord = seatCoords[seatId];
+                
+                // Set styles
+                seatCell.css({
+                    'position': 'absolute',
+                    'left': coord.x + '%',
+                    'top': coord.y + '%',
+                    'width': coord.w + 'px',
+                    'height': coord.h + 'px',
+                    'display': 'flex',
+                    'align-items': 'center',
+                    'justify-content': 'center',
+                    'z-index': '50',
+                    'padding': '0',
+                    'border-radius': '6px',
+                    'margin': '0'
+                });
+
+                // Adjust icon
+                var shape = coord.shape || 'chair';
+                var iconClass = shape === 'sofa' ? 'fa-couch' : 'fa-chair';
+                
+                // Remove text labels
+                seatCell.contents().filter(function() {
+                    return this.nodeType === 3;
+                }).remove();
+
+                // Clear old shape icon
+                seatCell.find('i.seat-shape-icon').remove();
+                
+                // Append shape icon
+                var isDamaged = seatCell.hasClass('DamagedSeat');
+                var iconToRender = isDamaged ? 'fa-triangle-exclamation' : iconClass;
+                
+                seatCell.prepend('<i class="fa-solid ' + iconToRender + ' seat-shape-icon" style="font-size: ' + (coord.w * 0.45) + 'px; pointer-events: none; z-index: 1;"></i>');
+            }
+        });
+
+        // Load gates/structures
+        gates.forEach(function(gate) {
+            var borderRadius = gate.type === 'stage' ? '8px' : '50%';
+            var minDimension = Math.min(gate.w, gate.h);
+            var gateHtml = `
+                <div class="booking-gate" title="${gate.label}" style="position: absolute; left: ${gate.x}%; top: ${gate.y}%; background-color: ${gate.color}; width: ${gate.w}px; height: ${gate.h}px; border-radius: ${borderRadius}; border: 2px solid rgba(0,0,0,0.15); color: white; display: flex; align-items: center; justify-content: center; z-index: 100; font-size: ${minDimension * 0.4}px;">
+                    <i class="${gate.icon}"></i>
+                </div>
+            `;
+            venueDiv.append(gateHtml);
+        });
+    });
 </script>
 
 

@@ -168,6 +168,9 @@
                                                 <a class="btn btn-info btn-sm"
                                                     href="{{ url('/event_ticket/layout_mapping/' . $event_ticket->id) }}">Layout
                                                     Mapping</a>
+                                                <a class="btn btn-success btn-sm"
+                                                    href="{{ url('/event_ticket/layout_mapping_canvas/' . $event_ticket->id) }}">Layout
+                                                    Canvas</a>
                                                 <a class="btn btn-info btn-sm"
                                                     href="{{ route('event_ticket.show', $event_ticket->id) }}">View
                                                     Details</a>

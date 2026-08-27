@@ -95,6 +95,8 @@ Route::resource('/ticket_type', TicketTypeController::class);
 Route::post('/show_time_schedule/update_event_ticket_rates', [EventShowTimeScheduleController::class, 'update_event_ticket_rates'])->name('event_ticket_rates.update');
 Route::resource('/event_ticket', EventTicketController::class);
 Route::get('/event_ticket/layout_mapping/{id}', [EventTicketController::class, 'layout_mapping']);
+Route::get('/event_ticket/layout_mapping_canvas/{id}', [EventTicketController::class, 'layout_mapping_canvas']);
+Route::post('/event_ticket/save_layout_designer', [EventTicketController::class, 'save_layout_designer'])->name('event_ticket.save_layout_designer');
 Route::post('/event_ticket/update_event_seat', [EventTicketController::class, 'update_event_seat'])->name('event_ticket.update_event_seat');
 Route::post('/event_ticket/update_event_seat_from_booking', [EventTicketController::class, 'update_event_seat_from_booking'])->name('event_ticket.update_event_seat_from_booking');
 
@@ -148,6 +150,14 @@ Route::post('/layouts/update_seat_name', [LayoutController::class, 'update_seat_
 Route::post('/booking/update_event_seat_name', [BookingsController::class, 'update_event_seat_name'])->name('booking.update_event_seat_name');
 Route::post('/booking/update_event_label_name', [BookingsController::class, 'update_event_label_name'])->name('booking.update_event_label_name');
 Route::post('/layouts/update_stage_direction', [LayoutController::class, 'update_stage_direction'])->name('layouts.update_stage_direction');
+
+// Venue Layout Designer Routes
+Route::get('/layout/designer/{id}', [LayoutController::class, 'designer'])->name('layout.designer');
+Route::get('/layout/designer/{id}/load', [LayoutController::class, 'load_designer_data'])->name('layout.designer.load');
+Route::post('/layout/designer/{id}/save', [LayoutController::class, 'save_designer_data'])->name('layout.designer.save');
+Route::get('/layout/designer/pricing-categories/list', [LayoutController::class, 'list_pricing_categories'])->name('layout.designer.pricing_categories');
+Route::post('/layout/designer/pricing-categories/store', [LayoutController::class, 'store_pricing_category'])->name('layout.designer.pricing_categories.store');
+Route::delete('/layout/designer/pricing-categories/{id}/delete', [LayoutController::class, 'delete_pricing_category'])->name('layout.designer.pricing_categories.delete');
 
 
 //Ajax Controller Routing
