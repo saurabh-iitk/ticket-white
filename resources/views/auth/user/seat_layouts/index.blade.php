@@ -48,7 +48,10 @@
                                         <td>{{ $layout->layout_name }}</td>
                                         <td>{{ $layout->status }}</td>
                                         <td class="text-center">
-                                            <a class="btn btn-primary btn-sm mr-1" href="{{ route('layout.designer', $layout->id) }}">Designer</a>
+                                            @if(in_array('layout_update', Session::get('permissions')->toArray()))
+                                            <a class="btn btn-info btn-sm mr-1 text-white" href="{{ route('layout.edit',$layout->id) }}">Edit (Old)</a>
+                                            @endif
+                                            <a class="btn btn-primary btn-sm mr-1" href="{{ route('layout.designer', $layout->id) }}">Designer (New)</a>
                                             @if(in_array('layout_destroy', Session::get('permissions')->toArray()))
                                             <form action="{{ route('layout.destroy',$layout->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
