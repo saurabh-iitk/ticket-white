@@ -1,0 +1,21 @@
+{
+  "_vendor-CPGBb5Nm.js": {
+    "file": "assets/vendor-CPGBb5Nm.js",
+    "name": "vendor"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-B_9xOxt_.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/venue-designer/index.tsx": {
+    "file": "assets/index-Cas1U_Dh.js",
+    "name": "index",
+    "src": "resources/js/venue-designer/index.tsx",
+    "isEntry": true,
+    "imports": [
+      "_vendor-CPGBb5Nm.js"
+    ]
+  }
+}
