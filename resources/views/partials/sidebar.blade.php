@@ -64,14 +64,8 @@ $current_uri2 = request()->segment(2); ?>
                     @endif
 
                     @if (in_array('layout_index', Session::get('permissions')->toArray()))
-                        <li><a class="treeview-item {{ request()->is('layout*') && !request()->is('layout/create*') && !request()->is('layout/designer*') ? 'active' : '' }}"
+                        <li><a class="treeview-item {{ request()->is('layout*') ? 'active' : '' }}"
                                 href="{{ route('layout.index') }}"><i class="icon fa fa-circle-o"></i>Seat Layouts</a>
-                        </li>
-                        <li><a class="treeview-item {{ request()->is('layout/create*') ? 'active' : '' }}"
-                                href="{{ route('layout.create') }}"><i class="icon fa fa-circle-o"></i>Create Layout (Old)</a>
-                        </li>
-                        <li><a class="treeview-item {{ request()->is('layout/designer*') ? 'active' : '' }}"
-                                href="{{ url('layout/designer/5') }}"><i class="icon fa fa-circle-o"></i>Venue Designer (New)</a>
                         </li>
                     @endif
 

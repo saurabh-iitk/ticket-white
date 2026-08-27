@@ -113,7 +113,13 @@ class LayoutController extends Controller
      */
     public function edit($id)
     {
-
+        $layout = Layout::where('id', $id)->first();
+        if (!$layout) {
+            return redirect()->route('layout.index')->with('error', 'Layout not found.');
+        }
+        $events = Event::where('status', 'ACTIVE')->get();
+        $venues = Venue::where('status', 'ACTIVE')->get();
+        return view('auth.user.seat_layouts.add_detail', compact('events', 'venues', 'layout'));
     }
 
     /**

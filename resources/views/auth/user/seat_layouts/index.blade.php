@@ -49,14 +49,14 @@
                                         <td>{{ $layout->status }}</td>
                                         <td class="text-center">
                                             @if(in_array('layout_update', Session::get('permissions')->toArray()))
-                                            <a class="btn btn-info btn-sm mr-1 text-white" href="{{ route('layout.edit',$layout->id) }}">Edit (Old)</a>
+                                            <a class="btn btn-info btn-sm mr-1 text-white" href="{{ route('layout.edit',$layout->id) }}" title="Edit (Old)"><i class="fa-solid fa-pen-to-square"></i></a>
                                             @endif
-                                            <a class="btn btn-primary btn-sm mr-1" href="{{ route('layout.designer', $layout->id) }}">Designer (New)</a>
+                                            <a class="btn btn-primary btn-sm mr-1" href="{{ route('layout.designer', $layout->id) }}" title="Designer (New)"><i class="fa-solid fa-compass-drafting"></i></a>
                                             @if(in_array('layout_destroy', Session::get('permissions')->toArray()))
                                             <form action="{{ route('layout.destroy',$layout->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" onclick="confirm_delete();" class="btn btn-danger btn-sm">Delete</button>
+                                                <button type="submit" onclick="confirm_delete();" class="btn btn-danger btn-sm" title="Delete"><i class="fa-solid fa-trash"></i></button>
                                             </form>
                                             @endif
                                         </td>
