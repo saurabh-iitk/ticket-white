@@ -1,4 +1,4 @@
-FallbackResource /ticket-white/index.php
+FallbackResource index.php
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
@@ -7,7 +7,6 @@ FallbackResource /ticket-white/index.php
     Options +FollowSymLinks
 
     RewriteEngine On
-    RewriteBase /ticket-white/
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
