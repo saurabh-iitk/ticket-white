@@ -1,27 +1,25 @@
-### HOSTINGER LITESHIELD RECAPTCHA, DO NOT REMOVE THIS LINE ###
-RewriteEngine On
-#LsRecaptcha 100
-#RewriteRule .* - [E=verifycaptcha:drop]
+FallbackResource /ticket-white/index.php
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-        Options -MultiViews
+        Options -MultiViews -Indexes
     </IfModule>
+    Options +FollowSymLinks
 
     RewriteEngine On
-    
+    RewriteBase /ticket-white/
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    RewriteCond %{REQUEST_FILENAME} -d [OR]
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteRule ^ ^$1 [N]
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
 
-    RewriteCond %{REQUEST_URI} (\.\w+$) [NC]
-    RewriteRule ^(.*)$ public/$1
-
-    
+    # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php
+    RewriteRule ^ index.php [L]
 </IfModule>
