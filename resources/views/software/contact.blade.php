@@ -29,7 +29,7 @@
                         </div>
                         <div class="info-text">
                             <h4>Corporate Headquarters</h4>
-                            <p>12th Floor, Tech Hub Tower, Sector 62, Noida, UP, India</p>
+                            <p>Lucknow, Uttar Pradesh, India</p>
                         </div>
                     </div>
                     
@@ -39,7 +39,7 @@
                         </div>
                         <div class="info-text">
                             <h4>Email Enquiries</h4>
-                            <p>sales@bookmyticket.software<br>support@bookmyticket.software</p>
+                            <p><a href="mailto:contact@billionbyte.in">contact@billionbyte.in</a></p>
                         </div>
                     </div>
                     
@@ -49,15 +49,15 @@
                         </div>
                         <div class="info-text">
                             <h4>Phone Support</h4>
-                            <p>+91 (120) 456-7890 (Sales)<br>+91 98765 43210 (Support)</p>
+                            <p><a href="tel:+918303441147">+91 8303441147</a></p>
                         </div>
                     </div>
                     
                     <!-- Stylized Map Placeholder -->
                     <div class="map-placeholder">
                         <i class="fa-solid fa-map-location-dot"></i>
-                        <strong>Noida IT Park, Sector 62</strong>
-                        <p style="margin: 0; font-size: 11px;">Sandbox Map Center: 28.6273° N, 77.3725° E</p>
+                        <strong>Lucknow, Uttar Pradesh</strong>
+                        <p style="margin: 0; font-size: 11px;">Sandbox Map Center: 26.8467° N, 80.9462° E</p>
                     </div>
                 </div>
                 
